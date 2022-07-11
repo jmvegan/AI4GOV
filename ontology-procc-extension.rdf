@@ -1,0 +1,3516 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://contsem.unizar.es/def/sector-publico/pproc#"
+     xml:base="http://contsem.unizar.es/def/sector-publico/pproc"
+     xmlns:s="http://schema.org/"
+     xmlns:gr="http://purl.org/goodrelations/v1#"
+     xmlns:pc="http://purl.org/procurement/public-contracts#"
+     xmlns:cpv="http://purl.org/cpv/2008/"
+     xmlns:org="http://www.w3.org/ns/org#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:pcd="http://purl.org/procurement/public-contracts-datatypes#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:foaf="http://xmlns.com/foaf/0.1/"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+     xmlns:pproc="http://contsem.unizar.es/def/sector-publico/pproc#"
+     xmlns:dcterms="http://purl.org/dc/terms/">
+    <owl:Ontology rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#">
+        <dcterms:creator rdf:resource="http://es.linkedin.com/pub/guillermo-esteban-p%C3%A9rez/56/210/5a8"/>
+        <dcterms:creator rdf:resource="http://webdiis.unizar.es/~seron/"/>
+        <dcterms:creator rdf:resource="http://www.araid.es/en/users/jfm#profile-investigador"/>
+        <dcterms:creator rdf:resource="https://www.linkedin.com/profile/view?id=218098827"/>
+        <rdfs:comment xml:lang="es">Ontología creada con objeto de publicar datos sobre contratación publica española en RDF. Se ha desarrollado durante el transcurso del proyecto &quot;Optimización de la contratación pública mediante la utilización de técnicas semánticas&quot; (CONTSEM), en el que participan la empresa iASoft (OESIA), la Universidad de Zaragoza y, como administraciones usuarias, el Gobierno de Aragón, la Diputación Provincial de Huesca y los ayuntamientos de Zaragoza y Huesca.
+
+Financiado por la Acción Estratégica de Telecomunicaciones y Sociedad de la Información. Año 2012. Ministerio de Industria, Comercio y Turismo (TSI-020606-2012-4), y desarrollado entre noviembre de 2012 y diciembre de 2014.</rdfs:comment>
+        <rdfs:label xml:lang="es">ontología de contratación pública</rdfs:label>
+        <rdfs:label xml:lang="en">public procurement ontology</rdfs:label>
+        <rdfs:seeAlso rdf:resource="http://figshare.com/articles/Ontology_Requirements_Specification_Document_ORSD_/1314591"/>
+        <owl:versionInfo>1.0.0</owl:versionInfo>
+        <owl:versionInfo xml:lang="es">Cambios de la versión 0.1.4 a la versión 1.0.0:
+
+- Cambios menores en la documentación RDF
+- Añadido nuevo axioma (pproc:ContractWithoutLots rdfs:subClassOf pproc:numberOfLots value 0)
+- Cambios en la documentación web
+- Arreglado un error donde pproc:criterion tenía a pc:AwardCriteriaCombination como (en vez de pc:AwardCriterion)
+- Añadida pproc:additionalObject para enlazar con múltiples CPVs
+- Añadida pproc:endMode para pproc:ElectronicAuctionPhase</owl:versionInfo>
+        <owl:versionInfo xml:lang="en">Changes from 0.1.4 to 1.0.0:
+
+- Minor RDF documentation changes
+- Added new axiom (pproc:ContractWithoutLots rdfs:subClassOf pproc:numberOfLots value 0)
+- Web documentation changes
+- Fixed an error where pproc:criterion had pc:AwardCriteriaCombination as range (instead pc:AwardCriterion)
+- Added missing pproc:additionalObject to link multiple CPVs
+- Added missing pproc:endMode from pproc:ElectronicAuctionPhase</owl:versionInfo>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/dc/terms/creator -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/creator"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.w3.org/2001/XMLSchema#date -->
+
+    <rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#date"/>
+    
+
+
+    <!-- http://www.w3.org/2001/XMLSchema#duration -->
+
+    <rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#duration"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#additionalDocumentReference -->
+
+    <owl:ObjectProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#additionalDocumentReference">
+        <rdfs:subPropertyOf rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#documentReference"/>
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#Contract"/>
+        <rdfs:label xml:lang="en">Additional document reference</rdfs:label>
+        <rdfs:label xml:lang="es">Documentación adicional</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#additionalObject -->
+
+    <owl:ObjectProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#additionalObject">
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ContractObject"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <rdfs:comment xml:lang="en">Property that points to the concept of the CPV code of an object.
+
+The concept used should be a valid representation of a CPV code, as it is in http://cpv.data.ac.uk/.</rdfs:comment>
+        <rdfs:comment xml:lang="es">Representación CPV del objeto de un contrato.
+
+Debe apuntar a un concepto de objeto siguiendo la clasificación CPV de algún esquema de conceptos SKOS, como http://cpv.data.ac.uk/.</rdfs:comment>
+        <rdfs:label xml:lang="en">Additional object of contract</rdfs:label>
+        <rdfs:label xml:lang="es">Objeto adicional del contrato</rdfs:label>
+        <owl:backwardCompatibleWith rdf:resource="http://purl.org/procurement/public-contracts#additionalObject"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#alternateMember -->
+
+    <owl:ObjectProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#alternateMember">
+        <rdfs:subPropertyOf rdf:resource="http://xmlns.com/foaf/0.1/member"/>
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#Committee"/>
+        <rdfs:range rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#CommitteeMember"/>
+        <rdfs:comment xml:lang="es">Miembro suplente en una mesa de contratación.</rdfs:comment>
+        <rdfs:comment xml:lang="en">Points to an alternate member of a committee.</rdfs:comment>
+        <rdfs:label xml:lang="en">Alternate member</rdfs:label>
+        <rdfs:label xml:lang="es">Miembro suplente</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#awardAgreement -->
+
+    <owl:ObjectProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#awardAgreement">
+        <rdfs:domain rdf:resource="http://purl.org/procurement/public-contracts#Tender"/>
+        <rdfs:range rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ContractingBodyAgreement"/>
+        <rdfs:comment xml:lang="es">Indica el acuerdo del órgano de contratación donde se ha adjudicado el contrato a un licitador.</rdfs:comment>
+        <rdfs:comment xml:lang="en">Points to the body agreement where a tender has been awarded.</rdfs:comment>
+        <rdfs:label xml:lang="es">Acuerdo de adjudicación</rdfs:label>
+        <rdfs:label xml:lang="en">Award agreement</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#briefing -->
+
+    <owl:ObjectProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#briefing">
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ContractProcedureSpecifications"/>
+        <rdfs:range rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#Briefing"/>
+        <rdfs:label xml:lang="en">Briefing</rdfs:label>
+        <rdfs:label xml:lang="es">Reunión informativa</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#budgetPrice -->
+
+    <owl:ObjectProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#budgetPrice">
+        <rdfs:subPropertyOf rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#price"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ContractEconomicConditions"/>
+        <rdfs:range rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#BundlePriceSpecification"/>
+        <rdfs:label xml:lang="en">Contract budget price</rdfs:label>
+        <rdfs:label xml:lang="es">Presupuesto del contrato</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#committee -->
+
+    <owl:ObjectProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#committee">
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ContractBodies"/>
+        <rdfs:range rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#Committee"/>
+        <rdfs:label xml:lang="es">Comité</rdfs:label>
+        <rdfs:label xml:lang="en">Committee</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#complementaryContract -->
+
+    <owl:ObjectProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#complementaryContract">
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#Contract"/>
+        <rdfs:range rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#Contract"/>
+        <rdfs:comment xml:lang="es">Relaciona un contrato con otro contrato complementario.</rdfs:comment>
+        <rdfs:comment xml:lang="en">Relates a contract with a complementary contract.</rdfs:comment>
+        <rdfs:label xml:lang="en">Complementary contract</rdfs:label>
+        <rdfs:label xml:lang="es">Contrato complementario</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#contractActivites -->
+
+    <owl:ObjectProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#contractActivites">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ContractProcedureSpecifications"/>
+        <rdfs:range rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ContractActivities"/>
+        <rdfs:label xml:lang="en">Contract activities</rdfs:label>
+        <rdfs:label xml:lang="es">Trámites del contrato</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#contractAdditionalObligations -->
+
+    <owl:ObjectProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#contractAdditionalObligations">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ContractProcedureSpecifications"/>
+        <rdfs:range rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ContractAdditionalObligations"/>
+        <rdfs:label xml:lang="en">Contract additional obligations</rdfs:label>
+        <rdfs:label xml:lang="es">Obligaciones accesorias del contrato</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#contractBodies -->
+
+    <owl:ObjectProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#contractBodies">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ContractProcedureSpecifications"/>
+        <rdfs:range rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ContractBodies"/>
+        <rdfs:label xml:lang="en">Contract bodies</rdfs:label>
+        <rdfs:label xml:lang="es">Órganos del contrato</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#contractEconomicConditions -->
+
+    <owl:ObjectProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#contractEconomicConditions">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ContractObject"/>
+        <rdfs:range rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ContractEconomicConditions"/>
+        <rdfs:label xml:lang="es">Condiciones económicas del contrato</rdfs:label>
+        <rdfs:label xml:lang="en">Contract economic conditions</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#contractExecutionConditions -->
+
+    <owl:ObjectProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#contractExecutionConditions">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ContractObject"/>
+        <rdfs:range rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ContractExecutionConditions"/>
+        <rdfs:label xml:lang="es">Condiciones de ejecución del contrato</rdfs:label>
+        <rdfs:label xml:lang="en">Contract execution conditions</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#contractModification -->
+
+    <owl:ObjectProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#contractModification">
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#Contract"/>
+        <rdfs:range rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ContractModification"/>
+        <rdfs:comment xml:lang="es">Indica la modificación efectuada en un contrato.</rdfs:comment>
+        <rdfs:comment xml:lang="en">Points to contract modifications being made.</rdfs:comment>
+        <rdfs:label xml:lang="en">Contract modification</rdfs:label>
+        <rdfs:label xml:lang="es">Modificación de contrato</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#contractModificationConditions -->
+
+    <owl:ObjectProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#contractModificationConditions">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ContractObject"/>
+        <rdfs:range rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ContractModificationConditions"/>
+        <rdfs:label xml:lang="es">Condiciones para la modificación del contrato</rdfs:label>
+        <rdfs:label xml:lang="en">Contract modification conditions</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#contractObject -->
+
+    <owl:ObjectProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#contractObject">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#Contract"/>
+        <rdfs:range rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ContractObject"/>
+        <rdfs:label xml:lang="en">Object of the contract</rdfs:label>
+        <rdfs:label xml:lang="es">Objeto del contrato</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#contractOrProcedureExtinction -->
+
+    <owl:ObjectProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#contractOrProcedureExtinction">
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#Contract"/>
+        <rdfs:range rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ContractOrProcedureExtinction"/>
+        <rdfs:comment xml:lang="en">Abstract property pointing to extinction of contract or procedure. Use any of its subclasses.</rdfs:comment>
+        <rdfs:comment xml:lang="es">Propiedad abstracta que indica la extinción de un contrato por resolución, renuncia o abandono. O bien la extinción del procedimiento al ser declarado desierto.
+
+Utilizar una de sus subclases.</rdfs:comment>
+        <rdfs:label xml:lang="en">Contract or procedure extinction</rdfs:label>
+        <rdfs:label xml:lang="es">Extinción de contrato o de procedimiento</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#contractProcedureSpecifications -->
+
+    <owl:ObjectProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#contractProcedureSpecifications">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#Contract"/>
+        <rdfs:range rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ContractProcedureSpecifications"/>
+        <rdfs:label xml:lang="en">Contract procedure specifications</rdfs:label>
+        <rdfs:label xml:lang="es">Especificaciones del procedimiento del contrato</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#contractResolution -->
+
+    <owl:ObjectProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#contractResolution">
+        <rdfs:subPropertyOf rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#contractOrProcedureExtinction"/>
+        <rdfs:range rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ContractResolution"/>
+        <rdfs:label xml:lang="en">Contract resolution</rdfs:label>
+        <rdfs:label xml:lang="es">Resolución de contrato</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#contractTemporalConditions -->
+
+    <owl:ObjectProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#contractTemporalConditions">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ContractObject"/>
+        <rdfs:range rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ContractTemporalConditions"/>
+        <rdfs:label xml:lang="es">Condiciones temporales del contrato</rdfs:label>
+        <rdfs:label xml:lang="en">Contract temporal conditions</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#contractingBody -->
+
+    <owl:ObjectProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#contractingBody">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#Contract"/>
+        <rdfs:range rdf:resource="http://www.w3.org/ns/org#Organization"/>
+        <rdfs:label xml:lang="en">Contracting body</rdfs:label>
+        <rdfs:label xml:lang="es">Órgano de contratación</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#contractingBodyAgreement -->
+
+    <owl:ObjectProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#contractingBodyAgreement">
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#ContractActivities"/>
+                    <rdf:Description rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#ContractModification"/>
+                    <rdf:Description rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#ContractOrProcedureExtinction"/>
+                    <rdf:Description rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#ContractProcedureSpecifications"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ContractingBodyAgreement"/>
+        <rdfs:label xml:lang="es">Acuerdo del órgano de contratación</rdfs:label>
+        <rdfs:label xml:lang="en">Contracting body agreement</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#criterion -->
+
+    <owl:ObjectProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#criterion">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#CriterionScore"/>
+        <rdfs:range rdf:resource="http://purl.org/procurement/public-contracts#AwardCriterion"/>
+        <rdfs:label xml:lang="es">Criterio</rdfs:label>
+        <rdfs:label xml:lang="en">Criterion</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#criterionScore -->
+
+    <owl:ObjectProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#criterionScore">
+        <rdfs:domain rdf:resource="http://purl.org/procurement/public-contracts#Tender"/>
+        <rdfs:range rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#CriterionScore"/>
+        <rdfs:comment xml:lang="es">Especifica la valoración de un único criterio, por lo que se utilizará una vez por cada criterio de adjudicación presente en el contrato.</rdfs:comment>
+        <rdfs:comment xml:lang="en">Property that points to an unique criterion and its score.</rdfs:comment>
+        <rdfs:label xml:lang="en">Criterion score</rdfs:label>
+        <rdfs:label xml:lang="es">Valoración de criterio</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#delegatingAuthority -->
+
+    <owl:ObjectProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#delegatingAuthority">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#Contract"/>
+        <rdfs:range rdf:resource="http://www.w3.org/ns/org#Organization"/>
+        <rdfs:comment xml:lang="es">Indica la entidad que delega la licitación de este contrato.</rdfs:comment>
+        <rdfs:comment xml:lang="en">Points to the authority that is delegating the contract.</rdfs:comment>
+        <rdfs:label xml:lang="en">Delegating authority</rdfs:label>
+        <rdfs:label xml:lang="es">Entidad delegante</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#documentReference -->
+
+    <owl:ObjectProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#documentReference">
+        <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+        <rdfs:comment xml:lang="es">Enlace a documentación.
+
+Propiedad similar a pc:attachment, pero sin dominio fijo, pues esta misma propiedad puede utilizarse con múltiples clases (e.g. pc:Contract ó contsem:TenderMeeting)</rdfs:comment>
+        <rdfs:comment xml:lang="en">Links to external documents.</rdfs:comment>
+        <rdfs:label xml:lang="en">Document reference</rdfs:label>
+        <rdfs:label xml:lang="es">Documentación</rdfs:label>
+        <rdfs:seeAlso rdf:resource="http://purl.org/procurement/public-contracts#attachment"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#electronicAuction -->
+
+    <owl:ObjectProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#electronicAuction">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ContractProcedureSpecifications"/>
+        <rdfs:range rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ElectronicAuction"/>
+        <rdfs:label xml:lang="en">Electronic auction</rdfs:label>
+        <rdfs:label xml:lang="es">Subasta electrónica</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#electronicAuctionPhase -->
+
+    <owl:ObjectProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#electronicAuctionPhase">
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ElectronicAuction"/>
+        <rdfs:range rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ElectronicAuctionPhase"/>
+        <rdfs:label xml:lang="en">Electronic auction phase</rdfs:label>
+        <rdfs:label xml:lang="es">Fase de subasta electrónica</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#electronicAuctionWeb -->
+
+    <owl:ObjectProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#electronicAuctionWeb">
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ElectronicAuction"/>
+        <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+        <rdfs:comment xml:lang="es">Apunta a la web donde puede se realiza la subasta electrónica, o en su defecto, donde se pueda encontrar más información acerca de la subasta electrónica.</rdfs:comment>
+        <rdfs:comment xml:lang="en">Property that indicated where the electronic auction is made or where we can look for more information about the auction.</rdfs:comment>
+        <rdfs:label xml:lang="en">Electronic auction web</rdfs:label>
+        <rdfs:label xml:lang="es">Web de la subasta electrónica</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#estimatedValue -->
+
+    <owl:ObjectProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#estimatedValue">
+        <rdfs:subPropertyOf rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#price"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ContractEconomicConditions"/>
+        <rdfs:range rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#BundlePriceSpecification"/>
+        <rdfs:label xml:lang="en">Estimated value of the contract</rdfs:label>
+        <rdfs:label xml:lang="es">Valor estimado del contrato</rdfs:label>
+        <owl:backwardCompatibleWith rdf:resource="http://purl.org/procurement/public-contracts#estimatedPrice"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#feePrice -->
+
+    <owl:ObjectProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#feePrice">
+        <rdfs:subPropertyOf rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#price"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ContractEconomicConditions"/>
+        <rdfs:range rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#BundlePriceSpecification"/>
+        <rdfs:label xml:lang="es">Canon</rdfs:label>
+        <rdfs:label xml:lang="en">Fee</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#frameworkAgreement -->
+
+    <owl:ObjectProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#frameworkAgreement">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#Contract"/>
+        <rdfs:range rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#FrameworkAgreement"/>
+        <rdfs:comment xml:lang="en">Property that indicates the framework agreement in which the contract consists.
+
+This property is used when the actual contract consist in the declaration of a framework agreement or a dynamic purchasing system.</rdfs:comment>
+        <rdfs:comment xml:lang="es">Señala al acuerdo marco o sistema dinámico de contratación en el cual consiste el contrato.
+
+Esta propiedad se utiliza cuando el actual contrato consista en la declaración de un acuerdo marco o un sistema dinámico de contratación.</rdfs:comment>
+        <rdfs:label xml:lang="es">Acuerdo marco o sistema dinámico de contratación</rdfs:label>
+        <rdfs:label xml:lang="en">Framework agreement</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#frameworkAgreementDerivativeContract -->
+
+    <owl:ObjectProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#frameworkAgreementDerivativeContract">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ConclusionContract"/>
+        <rdfs:range rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#DerivativeContract"/>
+        <rdfs:label xml:lang="es">Contrato derivado de un acuerdo marco</rdfs:label>
+        <rdfs:label xml:lang="en">Framework agreement derivative contract</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#fullMember -->
+
+    <owl:ObjectProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#fullMember">
+        <rdfs:subPropertyOf rdf:resource="http://xmlns.com/foaf/0.1/member"/>
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#Committee"/>
+        <rdfs:range rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#CommitteeMember"/>
+        <rdfs:comment xml:lang="es">Miembro titular en una mesa de contratación.</rdfs:comment>
+        <rdfs:comment xml:lang="en">Points to a full member of a committee.</rdfs:comment>
+        <rdfs:label xml:lang="en">Full member</rdfs:label>
+        <rdfs:label xml:lang="es">Miembro titular</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#informationKind -->
+
+    <owl:ObjectProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#informationKind">
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#InformationProvider"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <rdfs:range>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2004/02/skos/core#inScheme"/>
+                <owl:hasValue rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#InformationKindScheme"/>
+            </owl:Restriction>
+        </rdfs:range>
+        <rdfs:comment xml:lang="es">Indica el tipo de información que suministra un proveedor de información.
+
+Es posible utilizar esta propiedad numerosas veces para indicar diversos tipos de información.</rdfs:comment>
+        <rdfs:comment xml:lang="en">Property pointing to the type of the information is provided.</rdfs:comment>
+        <rdfs:label xml:lang="en">Information kind</rdfs:label>
+        <rdfs:label xml:lang="es">Tipo de información</rdfs:label>
+        <rdfs:seeAlso rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#InformationKindScheme"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#item -->
+
+    <owl:ObjectProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#item">
+        <rdfs:domain rdf:resource="http://purl.org/procurement/public-contracts#Tender"/>
+        <rdfs:range rdf:resource="http://purl.org/goodrelations/v1#Offering"/>
+        <rdfs:comment xml:lang="en">Property for attachment of an item to a tender.</rdfs:comment>
+        <rdfs:label xml:lang="es">Artículo</rdfs:label>
+        <rdfs:label xml:lang="en">Item</rdfs:label>
+        <owl:backwardCompatibleWith rdf:resource="http://purl.org/procurement/public-contracts#item"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#legalDocumentReference -->
+
+    <owl:ObjectProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#legalDocumentReference">
+        <rdfs:subPropertyOf rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#documentReference"/>
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#Contract"/>
+        <rdfs:label xml:lang="en">Legal document reference</rdfs:label>
+        <rdfs:label xml:lang="es">Pliego de cláusulas administrativas</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#location -->
+
+    <owl:ObjectProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#location">
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ContractObject"/>
+        <rdfs:range rdf:resource="http://schema.org/Place"/>
+        <rdfs:label xml:lang="es">Lugar de realización del contrato</rdfs:label>
+        <rdfs:label xml:lang="en">Place of contract&apos;s realization</rdfs:label>
+        <owl:backwardCompatibleWith rdf:resource="http://purl.org/procurement/public-contracts#location"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#lot -->
+
+    <owl:ObjectProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#lot">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/procurement/public-contracts#lot"/>
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ContractWithLots"/>
+        <rdfs:range rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#Lot"/>
+        <rdfs:label xml:lang="en">Lot</rdfs:label>
+        <rdfs:label>Lote</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#mainObject -->
+
+    <owl:ObjectProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#mainObject">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ContractObject"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <rdfs:comment xml:lang="en">Property that points to the concept of the CPV code of an object.
+
+The concept used should be a valid representation of a CPV code, as it is in http://cpv.data.ac.uk/.</rdfs:comment>
+        <rdfs:comment xml:lang="es">Representación CPV del objeto de un contrato.
+
+Debe apuntar a un concepto de objeto siguiendo la clasificación CPV de algún esquema de conceptos SKOS, como http://cpv.data.ac.uk/.</rdfs:comment>
+        <rdfs:label xml:lang="en">Main object of contract</rdfs:label>
+        <rdfs:label xml:lang="es">Principal objeto del contrato</rdfs:label>
+        <owl:backwardCompatibleWith rdf:resource="http://purl.org/procurement/public-contracts#mainObject"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#managingDepartment -->
+
+    <owl:ObjectProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#managingDepartment">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#Contract"/>
+        <rdfs:range rdf:resource="http://www.w3.org/ns/org#Organization"/>
+        <rdfs:comment xml:lang="en">Property that indicates the managing departament responsible of the contract.</rdfs:comment>
+        <rdfs:comment xml:lang="es">Servicio perteneciente a la entidad contratante que se encarga de la publicación y administración de este contrato.</rdfs:comment>
+        <rdfs:label xml:lang="en">Managing department</rdfs:label>
+        <rdfs:label xml:lang="es">Servicio gestor</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#minutesDocumentReference -->
+
+    <owl:ObjectProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#minutesDocumentReference">
+        <rdfs:subPropertyOf rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#documentReference"/>
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#TenderMeeting"/>
+        <rdfs:label xml:lang="es">Acta</rdfs:label>
+        <rdfs:label xml:lang="en">Minutes document reference</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#notice -->
+
+    <owl:ObjectProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#notice">
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#ContractActivities"/>
+                    <rdf:Description rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#ContractProcedureSpecifications"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#Notice"/>
+        <rdfs:label xml:lang="es">Anuncio</rdfs:label>
+        <rdfs:label xml:lang="en">Notice</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#noticeWeb -->
+
+    <owl:ObjectProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#noticeWeb">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#Notice"/>
+        <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+        <rdfs:label xml:lang="en">Notice web</rdfs:label>
+        <rdfs:label xml:lang="es">Web del anuncio</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#price -->
+
+    <owl:ObjectProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#price">
+        <rdfs:range rdf:resource="http://purl.org/goodrelations/v1#PriceSpecification"/>
+        <rdfs:label xml:lang="es">Precio</rdfs:label>
+        <rdfs:label xml:lang="en">Price</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#procedureResignation -->
+
+    <owl:ObjectProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#procedureResignation">
+        <rdfs:subPropertyOf rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#contractOrProcedureExtinction"/>
+        <rdfs:range rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ProcedureResignation"/>
+        <rdfs:label xml:lang="es">Desistimiento del procedimiento</rdfs:label>
+        <rdfs:label xml:lang="en">Procedure resignation</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#procedureType -->
+
+    <owl:ObjectProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#procedureType">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ContractProcedureSpecifications"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <rdfs:range>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2004/02/skos/core#inScheme"/>
+                <owl:hasValue rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ProcedureTypeScheme"/>
+            </owl:Restriction>
+        </rdfs:range>
+        <rdfs:label xml:lang="en">Procedure type</rdfs:label>
+        <rdfs:label xml:lang="es">Tipo de procedimiento</rdfs:label>
+        <rdfs:seeAlso rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ProcedureTypeScheme"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#procedureVoid -->
+
+    <owl:ObjectProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#procedureVoid">
+        <rdfs:subPropertyOf rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#contractOrProcedureExtinction"/>
+        <rdfs:range rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ProcedureVoid"/>
+        <rdfs:label xml:lang="es">Procedimiento desierto</rdfs:label>
+        <rdfs:label xml:lang="en">Procedure void</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#procedureWaive -->
+
+    <owl:ObjectProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#procedureWaive">
+        <rdfs:subPropertyOf rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#contractOrProcedureExtinction"/>
+        <rdfs:range rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ProcedureWaive"/>
+        <rdfs:label xml:lang="en">Procedure waive</rdfs:label>
+        <rdfs:label xml:lang="es">Renuncia del procedimiento</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#provision -->
+
+    <owl:ObjectProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#provision">
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ContractObject"/>
+        <rdfs:range rdf:resource="http://purl.org/goodrelations/v1#Offering"/>
+        <rdfs:label xml:lang="es">Prestación</rdfs:label>
+        <rdfs:label xml:lang="en">Provision</rdfs:label>
+        <owl:backwardCompatibleWith rdf:resource="http://purl.org/procurement/public-contracts#item"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#remedy -->
+
+    <owl:ObjectProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#remedy">
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#Contract"/>
+        <rdfs:range rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#Remedy"/>
+        <rdfs:label xml:lang="es">Recurso</rdfs:label>
+        <rdfs:label xml:lang="en">Remedy</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#resolutionDocumentReference -->
+
+    <owl:ObjectProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#resolutionDocumentReference">
+        <rdfs:subPropertyOf rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#documentReference"/>
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ContractingBodyAgreement"/>
+        <rdfs:label xml:lang="es">Resolución</rdfs:label>
+        <rdfs:label xml:lang="en">Resolution document reference</rdfs:label>
+        <rdfs:seeAlso rdf:resource="http://purl.org/procurement/public-contracts#agreement"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#technicalDocumentReference -->
+
+    <owl:ObjectProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#technicalDocumentReference">
+        <rdfs:subPropertyOf rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#documentReference"/>
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#Contract"/>
+        <rdfs:label xml:lang="es">Pliego de prescripciones técnicas</rdfs:label>
+        <rdfs:label xml:lang="en">Technical document reference</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#tenderAdmissionMeeting -->
+
+    <owl:ObjectProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#tenderAdmissionMeeting">
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ContractProcedureSpecifications"/>
+        <rdfs:range rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#TenderMeeting"/>
+        <rdfs:label xml:lang="es">Reunión sobre admisión de licitadores</rdfs:label>
+        <rdfs:label xml:lang="en">Tender admission meeting</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#tenderBriefing -->
+
+    <owl:ObjectProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#tenderBriefing">
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#Contract"/>
+        <rdfs:range rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#Briefing"/>
+        <rdfs:label xml:lang="es">Reunión informativa</rdfs:label>
+        <rdfs:label xml:lang="en">Tender briefing</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#tenderInformationProvider -->
+
+    <owl:ObjectProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#tenderInformationProvider">
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ContractProcedureSpecifications"/>
+        <rdfs:range rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#InformationProvider"/>
+        <rdfs:label xml:lang="es">Proveedor de información sobre la licitación</rdfs:label>
+        <rdfs:label xml:lang="en">Tender information provider</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#tenderMeeting -->
+
+    <owl:ObjectProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#tenderMeeting">
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#Committee"/>
+                    <rdf:Description rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#ContractActivities"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#TenderMeeting"/>
+        <rdfs:label xml:lang="es">Reunión de la mesa de contratación</rdfs:label>
+        <rdfs:label xml:lang="en">Tender meeting</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#tenderRequirements -->
+
+    <owl:ObjectProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#tenderRequirements">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#Contract"/>
+        <rdfs:range rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#TenderRequirements"/>
+        <rdfs:label xml:lang="es">Requisitos para las ofertas</rdfs:label>
+        <rdfs:label xml:lang="en">Tender requirements</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#tenderSubmissionLocation -->
+
+    <owl:ObjectProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#tenderSubmissionLocation">
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ContractProcedureSpecifications"/>
+        <rdfs:range rdf:resource="http://schema.org/Place"/>
+        <rdfs:label xml:lang="es">Sede de presentación de las ofertas</rdfs:label>
+        <rdfs:label xml:lang="en">Tender submission location</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#tenderersRequirements -->
+
+    <owl:ObjectProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#tenderersRequirements">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#Contract"/>
+        <rdfs:range rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#TenderersRequirements"/>
+        <rdfs:label xml:lang="es">Requisitos de los licitadores</rdfs:label>
+        <rdfs:label xml:lang="en">Tenderers requirements</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#urgencyType -->
+
+    <owl:ObjectProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#urgencyType">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ContractProcedureSpecifications"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <rdfs:range>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2004/02/skos/core#inScheme"/>
+                <owl:hasValue rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#UrgencyTypeScheme"/>
+            </owl:Restriction>
+        </rdfs:range>
+        <rdfs:label xml:lang="es">Tipo de tramitación</rdfs:label>
+        <rdfs:label xml:lang="en">Urgency type</rdfs:label>
+        <rdfs:seeAlso rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#UrgencyTypeScheme"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#websiteWithInformation -->
+
+    <owl:ObjectProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#websiteWithInformation">
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#InformationProvider"/>
+        <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+        <rdfs:label xml:lang="es">Web con información</rdfs:label>
+        <rdfs:label xml:lang="en">Website with information</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc/spain#supplier -->
+
+    <owl:ObjectProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc/spain#supplier">
+        <rdfs:domain rdf:resource="http://purl.org/procurement/public-contracts#Contract"/>
+        <rdfs:range rdf:resource="http://www.w3.org/ns/org#Organization"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/goodrelations/v1#hasPriceSpecification -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/goodrelations/v1#hasPriceSpecification">
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/goodrelations/v1#"/>
+        <rdfs:label xml:lang="es">Especificación del precio</rdfs:label>
+        <rdfs:label xml:lang="en">Price specification</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/procurement/public-contracts#actualPrice -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/procurement/public-contracts#actualPrice">
+        <rdfs:subPropertyOf rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#price"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/procurement/public-contracts#"/>
+        <rdfs:label xml:lang="en">Actual price</rdfs:label>
+        <rdfs:label xml:lang="es">Precio final</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/procurement/public-contracts#awardCriteriaCombination -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/procurement/public-contracts#awardCriteriaCombination">
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/procurement/public-contracts#"/>
+        <rdfs:label xml:lang="en">Award criteria combination</rdfs:label>
+        <rdfs:label xml:lang="es">Combinación de criterios para la adjudicación</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/procurement/public-contracts#awardCriterion -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/procurement/public-contracts#awardCriterion">
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/procurement/public-contracts#"/>
+        <rdfs:label xml:lang="en">Award criterion</rdfs:label>
+        <rdfs:label xml:lang="es">Criterio de adjudicación</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/procurement/public-contracts#contractingAuthority -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/procurement/public-contracts#contractingAuthority">
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/procurement/public-contracts#"/>
+        <rdfs:label xml:lang="en">Contracting authority</rdfs:label>
+        <rdfs:label xml:lang="es">Entidad contratante</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/procurement/public-contracts#lot -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/procurement/public-contracts#lot">
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/procurement/public-contracts#"/>
+        <rdfs:label xml:lang="en">Lot</rdfs:label>
+        <rdfs:label xml:lang="es">Lote</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/procurement/public-contracts#offeredPrice -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/procurement/public-contracts#offeredPrice">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/goodrelations/v1#hasPriceSpecification"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/procurement/public-contracts#"/>
+        <rdfs:label xml:lang="en">Offered price</rdfs:label>
+        <rdfs:label xml:lang="es">Precio ofrecido</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/procurement/public-contracts#onBehalfOf -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/procurement/public-contracts#onBehalfOf">
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/procurement/public-contracts#"/>
+        <rdfs:label xml:lang="es">En nombre de</rdfs:label>
+        <rdfs:label xml:lang="en">On behalf of</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/procurement/public-contracts#supplier -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/procurement/public-contracts#supplier">
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/procurement/public-contracts#"/>
+        <rdfs:label xml:lang="es">Proveedor</rdfs:label>
+        <rdfs:label xml:lang="en">Supplier</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/procurement/public-contracts#tender -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/procurement/public-contracts#tender">
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/procurement/public-contracts#"/>
+        <rdfs:label xml:lang="es">Oferta presentada</rdfs:label>
+        <rdfs:label xml:lang="en">Submitted tender</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://schema.org/location -->
+
+    <owl:ObjectProperty rdf:about="http://schema.org/location">
+        <rdfs:isDefinedBy rdf:resource="http://schema.org/"/>
+        <rdfs:label xml:lang="en">Location</rdfs:label>
+        <rdfs:label xml:lang="es">Lugar</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#broader -->
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/2004/02/skos/core#broader">
+        <rdfs:isDefinedBy rdf:resource="http://www.w3.org/2004/02/skos/core#"/>
+        <rdfs:label xml:lang="en">Broader</rdfs:label>
+        <rdfs:label xml:lang="es">Más amplio</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#inScheme -->
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/2004/02/skos/core#inScheme">
+        <rdfs:isDefinedBy rdf:resource="http://www.w3.org/2004/02/skos/core#"/>
+        <rdfs:label xml:lang="es">En esquema</rdfs:label>
+        <rdfs:label xml:lang="en">In scheme</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#narrower -->
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/2004/02/skos/core#narrower">
+        <rdfs:isDefinedBy rdf:resource="http://www.w3.org/2004/02/skos/core#"/>
+        <rdfs:label xml:lang="es">Más concreto</rdfs:label>
+        <rdfs:label xml:lang="en">Narrower</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#topConceptOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/2004/02/skos/core#topConceptOf">
+        <rdfs:isDefinedBy rdf:resource="http://www.w3.org/2004/02/skos/core#"/>
+        <rdfs:label xml:lang="es">Concepto superior</rdfs:label>
+        <rdfs:label xml:lang="en">Top concept of</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://xmlns.com/foaf/0.1/member -->
+
+    <owl:ObjectProperty rdf:about="http://xmlns.com/foaf/0.1/member">
+        <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/"/>
+        <rdfs:label xml:lang="en">Member</rdfs:label>
+        <rdfs:label xml:lang="es">Miembro</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#actualDuration -->
+
+    <owl:DatatypeProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#actualDuration">
+        <rdfs:subPropertyOf rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#duration"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#Contract"/>
+        <rdfs:label xml:lang="en">Actual duration</rdfs:label>
+        <rdfs:label xml:lang="es">Duración final</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#advertisementAmount -->
+
+    <owl:DatatypeProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#advertisementAmount">
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ContractAdditionalObligations"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="en">Advertisement amount</rdfs:label>
+        <rdfs:label xml:lang="es">Gastos de publicidad</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#assumptionProtectingProcedureType -->
+
+    <owl:DatatypeProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#assumptionProtectingProcedureType">
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ContractProcedureSpecifications"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="en">Assumption protecting the chosen procedure type</rdfs:label>
+        <rdfs:label xml:lang="es">Supuesto que ampara el uso del procedimiento elegido</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#awardDate -->
+
+    <owl:DatatypeProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#awardDate">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/terms/date"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://purl.org/procurement/public-contracts#Tender"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+        <rdfs:label xml:lang="en">Date of award</rdfs:label>
+        <rdfs:label xml:lang="es">Fecha de adjudicación</rdfs:label>
+        <owl:backwardCompatibleWith rdf:resource="http://purl.org/procurement/public-contracts#awardDate"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#compulsoryMeansForExecution -->
+
+    <owl:DatatypeProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#compulsoryMeansForExecution">
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#TenderersRequirements"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="es">Adscripción de medios</rdfs:label>
+        <rdfs:label xml:lang="en">Compulsory means for execution</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#constructionSubsidies -->
+
+    <owl:DatatypeProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#constructionSubsidies">
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ContractEconomicConditions"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="es">Descripción de las aportaciones públicas a la construcción.</rdfs:comment>
+        <rdfs:comment xml:lang="en">Description of the public subsidies to construction works contracts.</rdfs:comment>
+        <rdfs:label xml:lang="es">Aportaciones públicas</rdfs:label>
+        <rdfs:label xml:lang="en">Construction subsidies</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#criterionEvaluationMode -->
+
+    <owl:DatatypeProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#criterionEvaluationMode">
+        <rdfs:domain rdf:resource="http://purl.org/procurement/public-contracts#AwardCriterion"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="en">Property textually describing the criterion evaluarion mode.</rdfs:comment>
+        <rdfs:comment xml:lang="es">Propiedad para describir la forma de valoración del criterio.</rdfs:comment>
+        <rdfs:label xml:lang="en">Criterion evaluation mode</rdfs:label>
+        <rdfs:label xml:lang="es">Forma de evaluación del criterio</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#criterionMaxAndMinScores -->
+
+    <owl:DatatypeProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#criterionMaxAndMinScores">
+        <rdfs:domain rdf:resource="http://purl.org/procurement/public-contracts#AwardCriterion"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="en">Criterion maximum and minimum score</rdfs:label>
+        <rdfs:label xml:lang="es">Puntuación máxima y mínima del criterio</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#duration -->
+
+    <owl:DatatypeProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#duration">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#duration"/>
+        <rdfs:label xml:lang="es">Duración</rdfs:label>
+        <rdfs:label xml:lang="en">Duration</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#durationChange -->
+
+    <owl:DatatypeProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#durationChange">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ContractModification"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="en">Duration change</rdfs:label>
+        <rdfs:label xml:lang="es">Variación del plazo</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#earlyTramitation -->
+
+    <owl:DatatypeProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#earlyTramitation">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ContractProcedureSpecifications"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:label xml:lang="en">Early tramitation</rdfs:label>
+        <rdfs:label xml:lang="es">Tramitación anticipada</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#endMode -->
+
+    <owl:DatatypeProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#endMode">
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ElectronicAuctionPhase"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="en">End mode</rdfs:label>
+        <rdfs:label xml:lang="es">Modo de finalización</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#estimatedDuration -->
+
+    <owl:DatatypeProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#estimatedDuration">
+        <rdfs:subPropertyOf rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#duration"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#ContractTemporalConditions"/>
+                    <rdf:Description rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#FrameworkAgreement"/>
+                    <rdf:Description rdf:about="http://purl.org/goodrelations/v1#Offering"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:label xml:lang="es">Duración estimada</rdfs:label>
+        <rdfs:label xml:lang="en">Estimated duration</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#estimatedEndDate -->
+
+    <owl:DatatypeProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#estimatedEndDate">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/terms/date"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#ContractTemporalConditions"/>
+                    <rdf:Description rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#FrameworkAgreement"/>
+                    <rdf:Description rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#InformationProvider"/>
+                    <rdf:Description rdf:about="http://purl.org/goodrelations/v1#Offering"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+        <rdfs:label xml:lang="en">Estimated end date</rdfs:label>
+        <rdfs:label xml:lang="es">Fecha estimada de finalización</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#executionRequeriments -->
+
+    <owl:DatatypeProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#executionRequeriments">
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ContractExecutionConditions"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="es">Campo para definir las condiciones de ejecución del contrato si las hubiera (e.g. forma jurídica a adoptar por la agrupación de contratistas)</rdfs:comment>
+        <rdfs:comment xml:lang="en">Property to define alternative execution requirements (e.g. legal form to be adopted by tenderers).</rdfs:comment>
+        <rdfs:label xml:lang="es">Condiciones de ejecución</rdfs:label>
+        <rdfs:label xml:lang="en">Execution requeriments</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#expectedCauseModification -->
+
+    <owl:DatatypeProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#expectedCauseModification">
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ContractModificationConditions"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="es">Causas previstas de modificación</rdfs:label>
+        <rdfs:label xml:lang="en">Expected cause modification</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#extinctionCause -->
+
+    <owl:DatatypeProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#extinctionCause">
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ContractOrProcedureExtinction"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="es">Causa de extinctión</rdfs:label>
+        <rdfs:label xml:lang="en">Extinction cause</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#finalFinancialGuarantee -->
+
+    <owl:DatatypeProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#finalFinancialGuarantee">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ContractAdditionalObligations"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+        <rdfs:comment xml:lang="es">El rango en esta propiedad indica un porcentaje, por lo que el rango del número real a utilizar debe estar comprendido entre 0.0 y 100.0.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The range of this property must be a percentage (i.e. float between 0.0 and 100.0)</rdfs:comment>
+        <rdfs:label xml:lang="en">Final financial guarantee</rdfs:label>
+        <rdfs:label xml:lang="es">Garantía definitiva</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#finalFinancialGuaranteeDuration -->
+
+    <owl:DatatypeProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#finalFinancialGuaranteeDuration">
+        <rdfs:subPropertyOf rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#duration"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ContractAdditionalObligations"/>
+        <rdfs:label xml:lang="en">Final financial guarantee duration</rdfs:label>
+        <rdfs:label xml:lang="es">Plazo de la garantía definitiva</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#formalizedDate -->
+
+    <owl:DatatypeProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#formalizedDate">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/terms/date"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://purl.org/procurement/public-contracts#Tender"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+        <rdfs:label xml:lang="es">Fecha de formalización</rdfs:label>
+        <rdfs:label xml:lang="en">Formalized date</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#isNegotiable -->
+
+    <owl:DatatypeProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#isNegotiable">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://purl.org/procurement/public-contracts#AwardCriterion"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:label xml:lang="es">Es negociable</rdfs:label>
+        <rdfs:label xml:lang="en">Is negotiable</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#lodgedRemedyDate -->
+
+    <owl:DatatypeProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#lodgedRemedyDate">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/terms/date"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#Remedy"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+        <rdfs:comment xml:lang="en">Date where a remedy is lodged.</rdfs:comment>
+        <rdfs:comment xml:lang="es">Fecha en la cual se ha interpuesto el recurso ante el órgano oficial.</rdfs:comment>
+        <rdfs:label xml:lang="es">Fecha de interposición del recurso</rdfs:label>
+        <rdfs:label xml:lang="en">Lodged remedy date</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#maxBudgetChange -->
+
+    <owl:DatatypeProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#maxBudgetChange">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ContractModificationConditions"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+        <rdfs:comment xml:lang="es">El rango en esta propiedad indica un porcentaje, por lo que el rango del número real a utilizar debe estar comprendido entre 0.0 y 100.0.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The range of this property must be a percentage (i.e. float between 0.0 and 100.0)</rdfs:comment>
+        <rdfs:label xml:lang="en">Maximum budget change</rdfs:label>
+        <rdfs:label xml:lang="es">Modificación máxima de presupuesto</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#maxFinalPriceChange -->
+
+    <owl:DatatypeProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#maxFinalPriceChange">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ContractModificationConditions"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+        <rdfs:comment xml:lang="es">El rango en esta propiedad indica un porcentaje, por lo que el rango del número real a utilizar debe estar comprendido entre 0.0 y 100.0.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The range of this property must be a percentage (i.e. float between 0.0 and 100.0)</rdfs:comment>
+        <rdfs:label xml:lang="en">Maximum final price change</rdfs:label>
+        <rdfs:label xml:lang="es">Modificación máxima sobre precio final</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#maxInvitations -->
+
+    <owl:DatatypeProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#maxInvitations">
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ContractProcedureSpecifications"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="en">Maximum number of invitations</rdfs:label>
+        <rdfs:label xml:lang="es">Número máximo de invitaciones</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#maxNumberOfOperators -->
+
+    <owl:DatatypeProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#maxNumberOfOperators">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#FrameworkAgreement"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"/>
+        <rdfs:label xml:lang="en">Maximum number of operators</rdfs:label>
+        <rdfs:label xml:lang="es">Número máximo de participantes</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#maxSubcontracting -->
+
+    <owl:DatatypeProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#maxSubcontracting">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ContractExecutionConditions"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+        <rdfs:comment xml:lang="es">El rango en esta propiedad indica un porcentaje, por lo que el rango del número real a utilizar debe estar comprendido entre 0.0 y 100.0.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The range of this property must be a percentage (i.e. float between 0.0 and 100.0)</rdfs:comment>
+        <rdfs:label xml:lang="en">Maximum subcontracting</rdfs:label>
+        <rdfs:label xml:lang="es">Subcontratación máxima</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#minInvitations -->
+
+    <owl:DatatypeProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#minInvitations">
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ContractProcedureSpecifications"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="en">Minimum number of invitations</rdfs:label>
+        <rdfs:label xml:lang="es">Número mínimo de invitaciones</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#minNumberOfOperators -->
+
+    <owl:DatatypeProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#minNumberOfOperators">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#FrameworkAgreement"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"/>
+        <rdfs:label xml:lang="en">Minimum number of operators</rdfs:label>
+        <rdfs:label xml:lang="es">Número mínimo de participantes</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#minSubcontracting -->
+
+    <owl:DatatypeProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#minSubcontracting">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ContractExecutionConditions"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+        <rdfs:comment xml:lang="es">El rango en esta propiedad indica un porcentaje, por lo que el rango del número real a utilizar debe estar comprendido entre 0.0 y 100.0.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The range of this property must be a percentage (i.e. float between 0.0 and 100.0)</rdfs:comment>
+        <rdfs:label xml:lang="en">Minimum subcontracting</rdfs:label>
+        <rdfs:label xml:lang="es">Subcontratación mínima</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#modificationReason -->
+
+    <owl:DatatypeProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#modificationReason">
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ContractModification"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="es">Justificación de la modificación</rdfs:label>
+        <rdfs:label xml:lang="en">Modification reason</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#modificationScope -->
+
+    <owl:DatatypeProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#modificationScope">
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ContractModification"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="es">Alcance de la modificación</rdfs:label>
+        <rdfs:label xml:lang="en">Modification scope</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#noticeDate -->
+
+    <owl:DatatypeProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#noticeDate">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/terms/date"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#Notice"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+        <rdfs:label xml:lang="en">Date of notice publication</rdfs:label>
+        <rdfs:label xml:lang="es">Fecha de publicación del anuncio</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#noticeSentDate -->
+
+    <owl:DatatypeProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#noticeSentDate">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/terms/date"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#Notice"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+        <rdfs:label xml:lang="es">Fecha de envio del anuncio</rdfs:label>
+        <rdfs:label xml:lang="en">Notice sent date</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#noticeSite -->
+
+    <owl:DatatypeProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#noticeSite">
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#Notice"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="es">Esta propiedad se refiere al medio donde ha publicado el anuncio. Habitualmente este será un boletín o diario oficial, por ejemplo, el DOUE, BOE o boletín autonómico correspondiente, pero puede ser que sea publicado en prensa u otros medios.</rdfs:comment>
+        <rdfs:comment xml:lang="en">Property that indicates the sire where the notice is published. Normally it would be an official source, like the Official Jounral of the European Union, but it can be anywhere else, like press.</rdfs:comment>
+        <rdfs:label xml:lang="es">Medio de publicación del anuncio</rdfs:label>
+        <rdfs:label xml:lang="en">Notice site</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#numberOfLots -->
+
+    <owl:DatatypeProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#numberOfLots">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#Contract"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"/>
+        <rdfs:label xml:lang="en">Number of lots</rdfs:label>
+        <rdfs:label xml:lang="es">Número de lotes</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#offeredDuration -->
+
+    <owl:DatatypeProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#offeredDuration">
+        <rdfs:subPropertyOf rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#duration"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://purl.org/procurement/public-contracts#Tender"/>
+        <rdfs:label xml:lang="en">Offered duration</rdfs:label>
+        <rdfs:label xml:lang="es">Plazo de ejecución ofertado</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#offeredEndDate -->
+
+    <owl:DatatypeProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#offeredEndDate">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/terms/date"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://purl.org/procurement/public-contracts#Tender"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+        <rdfs:label xml:lang="es">Fecha de finalización ofertada</rdfs:label>
+        <rdfs:label xml:lang="en">Offered end date</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#otherAbilityRequisites -->
+
+    <owl:DatatypeProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#otherAbilityRequisites">
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#TenderersRequirements"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="en">Other ability requisites</rdfs:label>
+        <rdfs:label xml:lang="es">Otros requisitos</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#otherAwardTerms -->
+
+    <owl:DatatypeProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#otherAwardTerms">
+        <rdfs:domain rdf:resource="http://purl.org/procurement/public-contracts#Tender"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="en">Other award terms</rdfs:label>
+        <rdfs:label xml:lang="es">Otras condiciones de la adjudicación</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#otherGuarantee -->
+
+    <owl:DatatypeProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#otherGuarantee">
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ContractAdditionalObligations"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="en">Other guarantee</rdfs:label>
+        <rdfs:label xml:lang="es">Otras garantías</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#pricePercentageChange -->
+
+    <owl:DatatypeProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#pricePercentageChange">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ContractModification"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+        <rdfs:comment xml:lang="es">El rango en esta propiedad indica un porcentaje, por lo que el rango del número real a utilizar debe estar comprendido entre 0.0 y 100.0.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The range of this property must be a percentage (i.e. float between 0.0 and 100.0)</rdfs:comment>
+        <rdfs:label xml:lang="es">Porcentaje de variación sobre el precio</rdfs:label>
+        <rdfs:label xml:lang="en">Price percentage change</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#priceReviewAllowable -->
+
+    <owl:DatatypeProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#priceReviewAllowable">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ContractEconomicConditions"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:label xml:lang="en">Price review allowable</rdfs:label>
+        <rdfs:label xml:lang="es">Revisión de precios permitida</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#priceReviewIndex -->
+
+    <owl:DatatypeProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#priceReviewIndex">
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ContractEconomicConditions"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="es">Fórmula de revisión de precios</rdfs:label>
+        <rdfs:label xml:lang="en">Price Review Index</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#prorogationsExpected -->
+
+    <owl:DatatypeProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#prorogationsExpected">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ContractTemporalConditions"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"/>
+        <rdfs:label xml:lang="en">Prorogation number expected</rdfs:label>
+        <rdfs:label xml:lang="es">Prórrogas previstas</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#provisionalFinancialGuarantee -->
+
+    <owl:DatatypeProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#provisionalFinancialGuarantee">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ContractAdditionalObligations"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="es">Garantía provisional</rdfs:label>
+        <rdfs:label xml:lang="en">Provisional financial guarantee</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#recurrentRemedy -->
+
+    <owl:DatatypeProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#recurrentRemedy">
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#Remedy"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="en">Recurrent remedy</rdfs:label>
+        <rdfs:label xml:lang="es">Recurso recurrente</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#remedyInterposedTo -->
+
+    <owl:DatatypeProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#remedyInterposedTo">
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#Remedy"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="es">Recurso interpuesto a</rdfs:label>
+        <rdfs:label xml:lang="en">Remedy interposed to</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#remedyReason -->
+
+    <owl:DatatypeProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#remedyReason">
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#Remedy"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="es">Causa del recurso</rdfs:label>
+        <rdfs:label xml:lang="en">Remedy reason</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#remedyResolution -->
+
+    <owl:DatatypeProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#remedyResolution">
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#Remedy"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="en">Remedy resolution</rdfs:label>
+        <rdfs:label xml:lang="es">Resolución del recurso</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#remedyResolutionDate -->
+
+    <owl:DatatypeProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#remedyResolutionDate">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/terms/date"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#Remedy"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+        <rdfs:label xml:lang="es">Fecha de resolución del recurso</rdfs:label>
+        <rdfs:label xml:lang="en">Remedy resolution date</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#remedyResult -->
+
+    <owl:DatatypeProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#remedyResult">
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#Remedy"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="en">Contains the result of a lodged remedy. Normally it would contains values like &quot;Estimated&quot;, &quot;Rejected&quot; or &quot;Partially estimated&quot;.</rdfs:comment>
+        <rdfs:comment xml:lang="es">Contiene el resultado del recurso interpuesto en un contrato. Normalmente el valor de esta propiedad incluirá valores como &quot;Estimado&quot;, &quot;Estimado parcialmente&quot; o &quot;Desestimado&quot;.</rdfs:comment>
+        <rdfs:label xml:lang="en">Remedy result</rdfs:label>
+        <rdfs:label xml:lang="es">Resultado del recurso</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#requiredClassification -->
+
+    <owl:DatatypeProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#requiredClassification">
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#TenderersRequirements"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="es">Clasificación requerida</rdfs:label>
+        <rdfs:label xml:lang="en">Required classification</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#requiredEconomicAndFinancialStanding -->
+
+    <owl:DatatypeProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#requiredEconomicAndFinancialStanding">
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#TenderersRequirements"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="en">Required economic and financial standing</rdfs:label>
+        <rdfs:label xml:lang="es">Solvencia económica y financiera requerida</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#requiredTechnicalAndProfessionalAbility -->
+
+    <owl:DatatypeProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#requiredTechnicalAndProfessionalAbility">
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#TenderersRequirements"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="en">Required technical and professional ability</rdfs:label>
+        <rdfs:label xml:lang="es">Solvencia técnica y profesional requerida</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#reservedContractRestrictions -->
+
+    <owl:DatatypeProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#reservedContractRestrictions">
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#TenderersRequirements"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="es">Contratos reservados</rdfs:label>
+        <rdfs:label xml:lang="en">Reserved contract restrictions</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#score -->
+
+    <owl:DatatypeProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#score">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#CriterionScore"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+        <rdfs:comment xml:lang="es">Indica la puntuación que ha recibido un criterio.</rdfs:comment>
+        <rdfs:label xml:lang="es">Puntuación</rdfs:label>
+        <rdfs:label xml:lang="en">Score</rdfs:label>
+        <rdfs:label xml:lang="es">Valoración</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#tenderCommitteeAppointmentDate -->
+
+    <owl:DatatypeProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#tenderCommitteeAppointmentDate">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/terms/date"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#Committee"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+        <rdfs:label xml:lang="es">Fecha de nombramiento</rdfs:label>
+        <rdfs:label xml:lang="en">Tender committee appointment date</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#tenderCommitteeRole -->
+
+    <owl:DatatypeProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#tenderCommitteeRole">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#CommitteeMember"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="es">Indica el cargo que una persona ostenta dentro del comité del contratación.</rdfs:comment>
+        <rdfs:comment xml:lang="en">Indicated the role of a person inside the committee.</rdfs:comment>
+        <rdfs:label xml:lang="es">Cargo en el comité de contratación</rdfs:label>
+        <rdfs:label xml:lang="en">Tender committee role</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#tenderDeadline -->
+
+    <owl:DatatypeProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#tenderDeadline">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/terms/date"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ContractProcedureSpecifications"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <rdfs:label xml:lang="es">Fecha límite para la presentación de ofertas o de peticiones a participar</rdfs:label>
+        <rdfs:label xml:lang="en">Time-limit for submission of tenders or requests to participate</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#tenderDocumentNeeds -->
+
+    <owl:DatatypeProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#tenderDocumentNeeds">
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#TenderRequirements"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="es">Define la documentación necesaria a presentar en las ofertas.</rdfs:comment>
+        <rdfs:comment xml:lang="en">Defines the necessary documentation a tender must include.</rdfs:comment>
+        <rdfs:label xml:lang="es">Documentación a presentar</rdfs:label>
+        <rdfs:label xml:lang="en">Tender document needs</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#tenderDossierStartDate -->
+
+    <owl:DatatypeProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#tenderDossierStartDate">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/terms/date"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ContractProcedureSpecifications"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+        <rdfs:label xml:lang="es">Fecha de la resolución del inicio del expediente de contratación</rdfs:label>
+        <rdfs:label xml:lang="en">Start date of the tender dossier</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#tenderManteinanceDuration -->
+
+    <owl:DatatypeProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#tenderManteinanceDuration">
+        <rdfs:subPropertyOf rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#duration"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#TenderRequirements"/>
+        <rdfs:label xml:lang="es">Plazo de vigencia de las ofertas</rdfs:label>
+        <rdfs:label xml:lang="en">Tender manteinance duration</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#tenderPurpose -->
+
+    <owl:DatatypeProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#tenderPurpose">
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#TenderMeeting"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="es">Indica, de manera textual, el propósito de la reunión de contratación (e.g. apertura de sobre A)</rdfs:comment>
+        <rdfs:comment xml:lang="en">Indicates the purpose of the meeting (e.g. opening of first envelope).</rdfs:comment>
+        <rdfs:label xml:lang="es">Propósito de la reunión</rdfs:label>
+        <rdfs:label xml:lang="en">Tender purpose</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#tenderSubmissionMode -->
+
+    <owl:DatatypeProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#tenderSubmissionMode">
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ContractProcedureSpecifications"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="es">Modalidad de presentación</rdfs:label>
+        <rdfs:label xml:lang="en">Tender submission mode</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#tenderSubmissionSupportedLanguage -->
+
+    <owl:DatatypeProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#tenderSubmissionSupportedLanguage">
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#TenderRequirements"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="es">Idioma admitido en la presentación de oferta</rdfs:label>
+        <rdfs:label xml:lang="en">Tender submission supported language</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#variantAdmission -->
+
+    <owl:DatatypeProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#variantAdmission">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ContractObject"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:label xml:lang="es">Admisión de variantes</rdfs:label>
+        <rdfs:label xml:lang="en">Variant admission</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#variantDescription -->
+
+    <owl:DatatypeProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#variantDescription">
+        <rdfs:domain rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ContractObject"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="es">Campo para incluir la descripción, alcance, plazo u otros aspectos que están permitidos al presentar variantes en un contrato.</rdfs:comment>
+        <rdfs:comment xml:lang="en">Property to describe the allowed variantes when submitting a variant of a contract.</rdfs:comment>
+        <rdfs:label xml:lang="es">Descripción de las variantes</rdfs:label>
+        <rdfs:label xml:lang="en">Variant description</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc/spain#cif -->
+
+    <owl:DatatypeProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc/spain#cif">
+        <rdfs:domain rdf:resource="http://www.w3.org/ns/org#Organization"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc/spain#cpv -->
+
+    <owl:DatatypeProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc/spain#cpv">
+        <rdfs:domain rdf:resource="http://purl.org/procurement/public-contracts#Contract"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc/spain#dir3 -->
+
+    <owl:DatatypeProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc/spain#dir3">
+        <rdfs:domain rdf:resource="http://www.w3.org/ns/org#Organization"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc/spain#expediente -->
+
+    <owl:DatatypeProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc/spain#expediente">
+        <rdfs:domain rdf:resource="http://purl.org/procurement/public-contracts#Contract"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc/spain#lote -->
+
+    <owl:DatatypeProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc/spain#lote">
+        <rdfs:domain rdf:resource="http://purl.org/procurement/public-contracts#Contract"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc/spain#price -->
+
+    <owl:DatatypeProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc/spain#price">
+        <rdfs:domain rdf:resource="http://purl.org/procurement/public-contracts#Contract"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc/spain#state -->
+
+    <owl:DatatypeProperty rdf:about="http://contsem.unizar.es/def/sector-publico/pproc/spain#state">
+        <rdfs:domain rdf:resource="http://purl.org/procurement/public-contracts#Contract"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/date -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/dc/terms/date">
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/terms/"/>
+        <rdfs:label xml:lang="en">Date</rdfs:label>
+        <rdfs:label xml:lang="es">Fecha</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/description -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/dc/terms/description">
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/terms/"/>
+        <rdfs:label xml:lang="es">Descripción</rdfs:label>
+        <rdfs:label xml:lang="en">Description</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/title -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/dc/terms/title">
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/terms/"/>
+        <rdfs:label xml:lang="en">Title</rdfs:label>
+        <rdfs:label xml:lang="es">Título</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/procurement/public-contracts#actualEndDate -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/procurement/public-contracts#actualEndDate">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/terms/date"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/procurement/public-contracts#"/>
+        <rdfs:label xml:lang="en">Actual end date</rdfs:label>
+        <rdfs:label xml:lang="es">Fecha de finalización final</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/procurement/public-contracts#criterionWeight -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/procurement/public-contracts#criterionWeight">
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/procurement/public-contracts#"/>
+        <rdfs:label xml:lang="en">Criterion weight</rdfs:label>
+        <rdfs:label xml:lang="es">Peso del criterio</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/procurement/public-contracts#criteronName -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/procurement/public-contracts#criteronName">
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/procurement/public-contracts#"/>
+        <rdfs:label xml:lang="en">Criterion name</rdfs:label>
+        <rdfs:label xml:lang="es">Nombre del criterio</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://schema.org/address -->
+
+    <owl:DatatypeProperty rdf:about="http://schema.org/address">
+        <rdfs:isDefinedBy rdf:resource="http://schema.org/"/>
+        <rdfs:label xml:lang="en">Address</rdfs:label>
+        <rdfs:label xml:lang="es">Dirección</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://schema.org/addressCountry -->
+
+    <owl:DatatypeProperty rdf:about="http://schema.org/addressCountry">
+        <rdfs:isDefinedBy rdf:resource="http://schema.org/"/>
+        <rdfs:label xml:lang="en">Address country</rdfs:label>
+        <rdfs:label xml:lang="es">País</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://schema.org/addressLocality -->
+
+    <owl:DatatypeProperty rdf:about="http://schema.org/addressLocality">
+        <rdfs:isDefinedBy rdf:resource="http://schema.org/"/>
+        <rdfs:label xml:lang="en">Address locality</rdfs:label>
+        <rdfs:label xml:lang="es">Localidad</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://schema.org/name -->
+
+    <owl:DatatypeProperty rdf:about="http://schema.org/name">
+        <rdfs:isDefinedBy rdf:resource="http://schema.org/"/>
+        <rdfs:label xml:lang="en">Name</rdfs:label>
+        <rdfs:label xml:lang="es">Nombre</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://schema.org/postalAddress -->
+
+    <owl:DatatypeProperty rdf:about="http://schema.org/postalAddress">
+        <rdfs:isDefinedBy rdf:resource="http://schema.org/"/>
+        <rdfs:label xml:lang="es">Dirección postal</rdfs:label>
+        <rdfs:label xml:lang="en">Postal address</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://schema.org/startDate -->
+
+    <owl:DatatypeProperty rdf:about="http://schema.org/startDate">
+        <rdfs:isDefinedBy rdf:resource="http://schema.org/"/>
+        <rdfs:label xml:lang="es">Fecha de inicio</rdfs:label>
+        <rdfs:label xml:lang="en">Start date</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://schema.org/streetAddress -->
+
+    <owl:DatatypeProperty rdf:about="http://schema.org/streetAddress">
+        <rdfs:isDefinedBy rdf:resource="http://schema.org/"/>
+        <rdfs:label xml:lang="es">Calle</rdfs:label>
+        <rdfs:label xml:lang="en">Street address</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#AcceptedTender -->
+
+    <owl:Class rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#AcceptedTender">
+        <rdfs:subClassOf rdf:resource="http://purl.org/procurement/public-contracts#Tender"/>
+        <owl:disjointWith rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ExcludedTender"/>
+        <rdfs:comment xml:lang="es">Clase para definir las ofertas que se han admitido a licitación.</rdfs:comment>
+        <rdfs:comment xml:lang="en">Class describing the tenders accepted in the procurement public contract.</rdfs:comment>
+        <rdfs:label xml:lang="en">Accepted tender</rdfs:label>
+        <rdfs:label xml:lang="es">Oferta admitida</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#AdditionalInformationNotice -->
+
+    <owl:Class rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#AdditionalInformationNotice">
+        <rdfs:subClassOf rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#Notice"/>
+        <rdfs:label xml:lang="en">Additional information notice</rdfs:label>
+        <rdfs:label xml:lang="es">Anuncio de información adicional</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#AgreementContract -->
+
+    <owl:Class rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#AgreementContract">
+        <rdfs:subClassOf rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#PublicServicesManagementContract"/>
+        <rdfs:comment xml:lang="en">Class describing the contract concerts with natural or legal person performing similar services at the public service in question.</rdfs:comment>
+        <rdfs:comment xml:lang="es">Contrato de los conciertos con persona natural o jurídica que venga realizando prestaciones análogas a las que constituyen el servicio público de que se trate.</rdfs:comment>
+        <rdfs:label xml:lang="en">Agreement contract</rdfs:label>
+        <rdfs:label xml:lang="es">Concierto</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#AwardedTender -->
+
+    <owl:Class rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#AwardedTender">
+        <rdfs:subClassOf rdf:resource="http://purl.org/procurement/public-contracts#Tender"/>
+        <rdfs:comment xml:lang="es">Clase para definir las oferta que han sido adjudicadas.</rdfs:comment>
+        <rdfs:comment xml:lang="en">Class describing the awarded tenders.</rdfs:comment>
+        <rdfs:label xml:lang="en">Awarded tender</rdfs:label>
+        <rdfs:label xml:lang="es">Oferta adjudicada</rdfs:label>
+        <owl:backwardCompatibleWith rdf:resource="http://purl.org/procurement/public-contracts#awardedTender"/>
+    </owl:Class>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#Briefing -->
+
+    <owl:Class rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#Briefing">
+        <rdfs:subClassOf rdf:resource="http://schema.org/Event"/>
+        <rdfs:comment xml:lang="en">Informative meeting about the public procurement contract.</rdfs:comment>
+        <rdfs:comment xml:lang="es">Reunión informativa sobre la licitación del contrato.</rdfs:comment>
+        <rdfs:label xml:lang="en">Briefing</rdfs:label>
+        <rdfs:label xml:lang="es">Reunión informativa</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#BundlePriceSpecification -->
+
+    <owl:Class rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#BundlePriceSpecification">
+        <rdfs:subClassOf rdf:resource="http://purl.org/goodrelations/v1#PriceSpecification"/>
+        <rdfs:comment xml:lang="es">Clase que representa el precio de conjuntos de objetos o un paquete determinado.
+
+Se utiliza para especificar el precio de la clase gr:Offering cuando este precio se refiere al del conjunto de los objetos (y no a su precio unitario).</rdfs:comment>
+        <rdfs:comment xml:lang="en">Class used to describe the price a set of objets.
+
+Can be used to define the total price of an gr:Offering. Its value must be equal to the gr:UnitPriceSpecification multiplied by the number of items.</rdfs:comment>
+        <rdfs:label xml:lang="en">Bundle price</rdfs:label>
+        <rdfs:label xml:lang="es">Precio de paquete</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#BuyContract -->
+
+    <owl:Class rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#BuyContract">
+        <rdfs:subClassOf rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#SuppliesContract"/>
+        <rdfs:comment xml:lang="es">Clase de los contratos de suministros cuyo objeto es la compra de bienes.</rdfs:comment>
+        <rdfs:comment xml:lang="en">Class to describe the supplies contracts aimed to buy supplies.</rdfs:comment>
+        <rdfs:label xml:lang="en">Buy contract</rdfs:label>
+        <rdfs:label xml:lang="es">Contrato de compra</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#Committee -->
+
+    <owl:Class rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#Committee">
+        <rdfs:comment xml:lang="en">Abstract class describing a set of persons in committee and its roles.</rdfs:comment>
+        <rdfs:comment xml:lang="es">Clase abstracta que representa un conjunto de personas en comité y sus roles dentro del esta agrupación.</rdfs:comment>
+        <rdfs:label xml:lang="es">Comité de contratación</rdfs:label>
+        <rdfs:label xml:lang="en">Tender committee</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#CommitteeMember -->
+
+    <owl:Class rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#CommitteeMember">
+        <rdfs:subClassOf rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+        <rdfs:comment xml:lang="en">Class that describes the member a committee.</rdfs:comment>
+        <rdfs:comment xml:lang="es">Miembro perteneciente a un comité de contratación concreto.</rdfs:comment>
+        <rdfs:label xml:lang="en">Committee member</rdfs:label>
+        <rdfs:label xml:lang="es">Miembro del comité</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#ConcessionContract -->
+
+    <owl:Class rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#ConcessionContract">
+        <rdfs:subClassOf rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#PublicServicesManagementContract"/>
+        <rdfs:comment xml:lang="es">Clase de los contratos en los que el empresario gestionará el servicio a su propio riesgo y ventura.</rdfs:comment>
+        <rdfs:comment xml:lang="en">Class of the contracts in which the awarded tenderer manage the public service themselves.</rdfs:comment>
+        <rdfs:label xml:lang="es">Concesión</rdfs:label>
+        <rdfs:label xml:lang="en">Concession contract</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#ConclusionContract -->
+
+    <owl:Class rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#ConclusionContract">
+        <rdfs:subClassOf rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#Contract"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#frameworkAgreement"/>
+                <owl:someValuesFrom rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#FrameworkAgreement"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#DerivativeContract"/>
+        <rdfs:comment xml:lang="es">Clase de los contratos que consisten en el establecimiento de un acuerdo marco o un sistema dinámico de contratación.</rdfs:comment>
+        <rdfs:comment xml:lang="en">Class describing the contracts consisting in the conclusion of a framework agreement or a dynamic purchasing system.</rdfs:comment>
+        <rdfs:label xml:lang="en">Conclusion contract</rdfs:label>
+        <rdfs:label xml:lang="es">Contrato de establecimiento</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#Contract -->
+
+    <owl:Class rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#Contract">
+        <rdfs:subClassOf rdf:resource="http://purl.org/procurement/public-contracts#Contract"/>
+        <rdfs:label xml:lang="es">Contrato público</rdfs:label>
+        <rdfs:label xml:lang="en">Public contract</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#ContractActivities -->
+
+    <owl:Class rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#ContractActivities">
+        <rdfs:comment xml:lang="es">Clase que engloba todos los trámites de un contrato (e.g. reuniones ó acuerdos del órgano de contratación).</rdfs:comment>
+        <rdfs:comment xml:lang="en">Class describing all activities of a contract (e.g. meetings or agreements of the contracting body).</rdfs:comment>
+        <rdfs:label xml:lang="en">Contract activites</rdfs:label>
+        <rdfs:label xml:lang="es">Trámites del contrato</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#ContractAdditionalObligations -->
+
+    <owl:Class rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#ContractAdditionalObligations">
+        <rdfs:comment xml:lang="es">Clase que define las obligaciones accesorias de un contrato (e.g. garantías ó gastos de publicidad).</rdfs:comment>
+        <rdfs:comment xml:lang="en">Class describing the additional obligations the contract needs (e.g. guarantees or advertisement costs)</rdfs:comment>
+        <rdfs:label xml:lang="en">Contract additional obligations</rdfs:label>
+        <rdfs:label xml:lang="es">Obligaciones accesorias del contrato</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#ContractAwardNotice -->
+
+    <owl:Class rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#ContractAwardNotice">
+        <rdfs:subClassOf rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#Notice"/>
+        <rdfs:label xml:lang="es">Anuncio de adjudicación</rdfs:label>
+        <rdfs:label xml:lang="en">Contract award notice</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#ContractBodies -->
+
+    <owl:Class rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#ContractBodies">
+        <rdfs:comment xml:lang="es">Clase que engloba los órganos relacionados con un contrato (e.g. mesa de contratación ó comité de expertos).</rdfs:comment>
+        <rdfs:comment xml:lang="en">Class describing the bodies related to the contract.</rdfs:comment>
+        <rdfs:label xml:lang="en">Contract bodies</rdfs:label>
+        <rdfs:label xml:lang="es">Órganos del contrato</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#ContractEconomicConditions -->
+
+    <owl:Class rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#ContractEconomicConditions">
+        <rdfs:comment xml:lang="es">Clase que define las condiciones económicas del contrato (e.g. presupuesto ó revisión de precios).</rdfs:comment>
+        <rdfs:comment xml:lang="en">Class defining the actual economic conditions of the contract (e.g. budget or the formula that describes the revision of its price).</rdfs:comment>
+        <rdfs:label xml:lang="es">Condiciones económicas del contrato</rdfs:label>
+        <rdfs:label xml:lang="en">Contract economic conditions</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#ContractExecutionConditions -->
+
+    <owl:Class rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#ContractExecutionConditions">
+        <rdfs:comment xml:lang="es">Clase que define las condiciones de ejecución de un contrato (e.g. condiciones especiales ó subcontratación).</rdfs:comment>
+        <rdfs:comment xml:lang="en">Class that defines the execution conditions of the contract (e.g. special execution conditions or subcontracting percentage amounts).</rdfs:comment>
+        <rdfs:label xml:lang="es">Condiciones de ejecución del contrato</rdfs:label>
+        <rdfs:label xml:lang="en">Contract execution conditions</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#ContractModification -->
+
+    <owl:Class rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#ContractModification">
+        <rdfs:comment xml:lang="es">Durante un contrato se puede dar también la necesidad de modificarlo una vez iniciada su ejecución, para plasmar este tipo de casos se debe utilizar esta clase.</rdfs:comment>
+        <rdfs:comment xml:lang="en">During the execution of a contract it could happen that the contract should be modified, to describe these kind of situations we use this class.</rdfs:comment>
+        <rdfs:label xml:lang="en">Contract modification</rdfs:label>
+        <rdfs:label xml:lang="es">Modificación del contrato</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#ContractModificationConditions -->
+
+    <owl:Class rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#ContractModificationConditions">
+        <rdfs:comment xml:lang="es">Clase que define las condiciones para la modificación de un contrato (e.g. porcentaje máximo de modificación del presupuesto).</rdfs:comment>
+        <rdfs:comment xml:lang="en">Class describing the conditions for which a contract can be modified (e.g. maximum percentage of its price or budget).</rdfs:comment>
+        <rdfs:label xml:lang="es">Condiciones para la modificación del contrato</rdfs:label>
+        <rdfs:label xml:lang="en">Contract modification conditions</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#ContractNotice -->
+
+    <owl:Class rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#ContractNotice">
+        <rdfs:subClassOf rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#Notice"/>
+        <rdfs:label xml:lang="es">Anuncio de licitación</rdfs:label>
+        <rdfs:label xml:lang="en">Contract notice</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#ContractObject -->
+
+    <owl:Class rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#ContractObject">
+        <rdfs:comment xml:lang="es">Clase que define el objeto del contrato y las diferentes condiciones, obligaciones y modificaciones de este.</rdfs:comment>
+        <rdfs:comment xml:lang="en">Class that defines the object of the contract and the conditions or modifications the contract can have.</rdfs:comment>
+        <rdfs:label xml:lang="en">Contract object</rdfs:label>
+        <rdfs:label xml:lang="es">Objeto del contato</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#ContractOrProcedureExtinction -->
+
+    <owl:Class rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#ContractOrProcedureExtinction">
+        <rdfs:comment xml:lang="en">Abstract class. There are some circumstances resulting in the extinction of the procedure of the contract or the contract itself. To describe that situations we may use one of its subclasses.</rdfs:comment>
+        <rdfs:comment xml:lang="es">Clase abstracta. Existe una serie de circunstancias que derivan en la extinctión del contrato o procedimiento. Para describir estas situaciones se hace uso de una de sus subclases.</rdfs:comment>
+        <rdfs:label xml:lang="en">Contract or procedure extinction</rdfs:label>
+        <rdfs:label xml:lang="es">Extinción del contrato o del procedimiento</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#ContractProcedureSpecifications -->
+
+    <owl:Class rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#ContractProcedureSpecifications">
+        <rdfs:comment xml:lang="es">Clase que define las especificaciones del procedimiento de un contrato (e.g. tipo de procedimiento o de tramitación).</rdfs:comment>
+        <rdfs:comment xml:lang="en">Class that specifies the procedure of a contract (e.g. type of procedure or its urgency).</rdfs:comment>
+        <rdfs:label xml:lang="en">Contract procedure</rdfs:label>
+        <rdfs:label xml:lang="es">Procedimiento del contrato</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#ContractResolution -->
+
+    <owl:Class rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#ContractResolution">
+        <rdfs:subClassOf rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ContractOrProcedureExtinction"/>
+        <rdfs:label xml:lang="en">Contract resolution</rdfs:label>
+        <rdfs:label xml:lang="es">Resolución del contrato</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#ContractTemporalConditions -->
+
+    <owl:Class rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#ContractTemporalConditions">
+        <rdfs:comment xml:lang="es">Clase que define las condiciones temporales de un contrato (e.g. plazo ó prórrogas).</rdfs:comment>
+        <rdfs:comment xml:lang="en">Class that describes the temporal conditions of the contract.</rdfs:comment>
+        <rdfs:label xml:lang="es">Condiciones temporales del contrato</rdfs:label>
+        <rdfs:label xml:lang="en">Contract temporal conditions</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#ContractWithLots -->
+
+    <owl:Class rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#ContractWithLots">
+        <rdfs:subClassOf rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#Contract"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#lot"/>
+                <owl:someValuesFrom rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#Lot"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="es">Clase de los contratos dividos en lotes.
+
+Cuando un contrato de muy grande, este puede ser dividido en diversos lotes por la entidad contratante. Las empresas presentan las ofertas a estos lotes separadamente (y no al contrato &quot;raíz&quot;), realizándose la adjudicación de la misma manera.</rdfs:comment>
+        <rdfs:comment xml:lang="en">Class of the contract that have lots.</rdfs:comment>
+        <rdfs:label xml:lang="en">Contract with lots</rdfs:label>
+        <rdfs:label xml:lang="es">Contrato con lotes</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#ContractWithoutLots -->
+
+    <owl:Class rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#ContractWithoutLots">
+        <rdfs:subClassOf rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#Contract"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#lot"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#Lot"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#numberOfLots"/>
+                <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</owl:hasValue>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="es">Clase de los contratos que no están dividos en lotes.</rdfs:comment>
+        <rdfs:comment xml:lang="en">Class to describe the contract not divided into lots.</rdfs:comment>
+        <rdfs:label xml:lang="en">Contract without lots</rdfs:label>
+        <rdfs:label xml:lang="es">Contrato sin lotes</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#ContractingBodyAgreement -->
+
+    <owl:Class rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#ContractingBodyAgreement">
+        <rdfs:label xml:lang="es">Acuerdo del órgano de contratación</rdfs:label>
+        <rdfs:label xml:lang="en">Contracting body agreement</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#CorrectionNotice -->
+
+    <owl:Class rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#CorrectionNotice">
+        <rdfs:subClassOf rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#Notice"/>
+        <rdfs:label xml:lang="es">Anuncio de corrección</rdfs:label>
+        <rdfs:label xml:lang="en">Correction notice</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#CriterionScore -->
+
+    <owl:Class rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#CriterionScore">
+        <rdfs:comment xml:lang="es">Clase para valorar individualmente un criterio de adjudicación. Esta formada por una puntuación (contsem:score) y un criterio (contsem:criterion).</rdfs:comment>
+        <rdfs:comment xml:lang="en">Class to describe an award criterion and its score.</rdfs:comment>
+        <rdfs:label xml:lang="en">Criterion score</rdfs:label>
+        <rdfs:label xml:lang="es">Valoración de criterio</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#DerivativeContract -->
+
+    <owl:Class rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#DerivativeContract">
+        <rdfs:subClassOf rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#Contract"/>
+        <rdfs:comment xml:lang="es">Clase de los contratos derivados de un acuerdo marco o un sistema dinámico de contratación.</rdfs:comment>
+        <rdfs:comment xml:lang="en">Class describing contracts derived from a framework agreement or a dynamic purchasing system.</rdfs:comment>
+        <rdfs:label xml:lang="es">Contrato derivado</rdfs:label>
+        <rdfs:label xml:lang="en">Derivative contract</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#DynamicPurchasingSystemConclusionContract -->
+
+    <owl:Class rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#DynamicPurchasingSystemConclusionContract">
+        <rdfs:subClassOf rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ConclusionContract"/>
+        <rdfs:comment xml:lang="es">Clase de los contratos que consisten en el establecimiento de un sistema dinámico de contratación.</rdfs:comment>
+        <rdfs:comment xml:lang="en">Class describing the contracts consisting in the conclusion of a dynamic purchasing system.</rdfs:comment>
+        <rdfs:label xml:lang="es">Contrato de establecimiento de un sistema dinámico de contratación</rdfs:label>
+        <rdfs:label xml:lang="en">Dynamic purchasing system conclusion contract</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#DynamicPurchasingSystemDerivativeContract -->
+
+    <owl:Class rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#DynamicPurchasingSystemDerivativeContract">
+        <rdfs:subClassOf rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#DerivativeContract"/>
+        <rdfs:comment xml:lang="es">Clase de los contratos derivados de un sistema dinámico de contratación</rdfs:comment>
+        <rdfs:comment xml:lang="en">Class describing contracts derived from a dynamic purchasing system.</rdfs:comment>
+        <rdfs:label xml:lang="es">Contrato derivado de un sistema dinámico de contratación</rdfs:label>
+        <rdfs:label xml:lang="en">Dynamic purchasing system derivative contract</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#ElectronicAuction -->
+
+    <owl:Class rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#ElectronicAuction">
+        <rdfs:comment xml:lang="es">Clase para especificar la realización de una subasta electrónica de uno o más criterios de adjudicación.</rdfs:comment>
+        <rdfs:comment xml:lang="en">Class that specifies the existence of an electronic auction of one or more of the award criterions.</rdfs:comment>
+        <rdfs:label xml:lang="en">Electronic auction</rdfs:label>
+        <rdfs:label xml:lang="es">Subasta electrónica</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#ElectronicAuctionPhase -->
+
+    <owl:Class rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#ElectronicAuctionPhase">
+        <rdfs:subClassOf rdf:resource="http://schema.org/Event"/>
+        <rdfs:comment xml:lang="en">Class describing a phase of an electronic auction.</rdfs:comment>
+        <rdfs:comment xml:lang="es">Fase de la subasta electrónica de uno o más de los criterios de adjudicación del contrato.</rdfs:comment>
+        <rdfs:label xml:lang="en">Electronic auction phase</rdfs:label>
+        <rdfs:label xml:lang="es">Fase de subasta electrónica</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#ExcludedTender -->
+
+    <owl:Class rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#ExcludedTender">
+        <rdfs:subClassOf rdf:resource="http://purl.org/procurement/public-contracts#Tender"/>
+        <rdfs:comment xml:lang="en">Class that defines the tenders excluded from the procurement procedure.</rdfs:comment>
+        <rdfs:comment xml:lang="es">Define las ofertas que han sido excluídas del proceso de licitación.</rdfs:comment>
+        <rdfs:label xml:lang="en">Excluded tender</rdfs:label>
+        <rdfs:label xml:lang="es">Oferta excluída</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#ExpertCommittee -->
+
+    <owl:Class rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#ExpertCommittee">
+        <rdfs:subClassOf rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#Committee"/>
+        <rdfs:label xml:lang="es">Comité de expertos</rdfs:label>
+        <rdfs:label xml:lang="en">Expert committee</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#ExtendableContract -->
+
+    <owl:Class rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#ExtendableContract">
+        <rdfs:subClassOf rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#Contract"/>
+        <rdfs:comment xml:lang="en">Class describing contracts whose end date can be extended.</rdfs:comment>
+        <rdfs:comment xml:lang="es">Contratos públicos cuya fecha de ejecución puede ser pospuesta o extendida.</rdfs:comment>
+        <rdfs:label xml:lang="es">Contrato prorrogable</rdfs:label>
+        <rdfs:label xml:lang="en">Extendable contract</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#FormalizationNotice -->
+
+    <owl:Class rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#FormalizationNotice">
+        <rdfs:subClassOf rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#Notice"/>
+        <rdfs:label xml:lang="es">Anuncio de formalización</rdfs:label>
+        <rdfs:label xml:lang="en">Formalization notice</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#FormalizedTender -->
+
+    <owl:Class rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#FormalizedTender">
+        <rdfs:subClassOf rdf:resource="http://purl.org/procurement/public-contracts#Tender"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#formalizedDate"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="es">Clase para definir la oferta que se ha formalizado.</rdfs:comment>
+        <rdfs:comment xml:lang="en">Class describing tenders being formalized.</rdfs:comment>
+        <rdfs:label xml:lang="en">Formalized tender</rdfs:label>
+        <rdfs:label xml:lang="es">Oferta formalizada</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#FrameworkAgreement -->
+
+    <owl:Class rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#FrameworkAgreement">
+        <rdfs:comment xml:lang="es">Clase a utilizar cuando estemos ante un contrato que consiste en la declaración, tanto de un acuerdo marco como de un sistema dinámico de contratación.</rdfs:comment>
+        <rdfs:comment xml:lang="en">Class used to describe a contract that is a declaration of a framework agreement or a dynamic purchasing system.</rdfs:comment>
+        <rdfs:label xml:lang="es">Acuerdo marco o Sistema Dinámico de contratación</rdfs:label>
+        <rdfs:label xml:lang="en">Framework agreement or dynamic purchasing system</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#FrameworkConclusionContract -->
+
+    <owl:Class rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#FrameworkConclusionContract">
+        <rdfs:subClassOf rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ConclusionContract"/>
+        <rdfs:comment xml:lang="es">Clase de los contratos que consisten en el establecimiento de un acuerdo marco.</rdfs:comment>
+        <rdfs:comment xml:lang="en">Class describing the contracts consisting in the conclusion of a framework agreement.</rdfs:comment>
+        <rdfs:label xml:lang="es">Contrato de establecimiento de un acuerdo marco</rdfs:label>
+        <rdfs:label xml:lang="en">Framework conclusion contract</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#FrameworkDerivativeContract -->
+
+    <owl:Class rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#FrameworkDerivativeContract">
+        <rdfs:subClassOf rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#DerivativeContract"/>
+        <rdfs:comment xml:lang="es">Clase de los contratos derivados de un acuerdo marco</rdfs:comment>
+        <rdfs:comment xml:lang="en">Class describing contracts derived from a framework agreement.</rdfs:comment>
+        <rdfs:label xml:lang="es">Contrato derivado de un acuerdo marco</rdfs:label>
+        <rdfs:label xml:lang="en">Framework derivative contract</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#HarmonizedContract -->
+
+    <owl:Class rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#HarmonizedContract">
+        <rdfs:subClassOf rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#Contract"/>
+        <rdfs:comment xml:lang="es">Clase de los contratos armonizados (i.e. contratos que alcanzan el umbral para actuar conforme a las Directivas del Parlamento Europeo y del Consejo en contratos públicos)</rdfs:comment>
+        <rdfs:comment xml:lang="en">Class to describe harmonized contracts (i.e. contracts that reachs the threshold to be treated as highlighted in the procurement Directives of the European Commision and European Council).</rdfs:comment>
+        <rdfs:label xml:lang="es">Contrato armonizado</rdfs:label>
+        <rdfs:label xml:lang="en">Harmonized contract</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#InformationProvider -->
+
+    <owl:Class rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#InformationProvider">
+        <rdfs:comment xml:lang="en">Class defining the provider of information about the contract.</rdfs:comment>
+        <rdfs:comment xml:lang="es">Proveedor de información sobre la licitación del contrato.</rdfs:comment>
+        <rdfs:label xml:lang="en">Information provider</rdfs:label>
+        <rdfs:label xml:lang="es">Proveedor de información</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#LeaseContract -->
+
+    <owl:Class rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#LeaseContract">
+        <rdfs:subClassOf rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#SuppliesContract"/>
+        <rdfs:comment xml:lang="es">Clase de los contratos de suministros cuyo objeto es el arrendamiento financiero de bienes.
+
+Popularmente conocido como &apos;renting&apos; en España.</rdfs:comment>
+        <rdfs:comment xml:lang="en">Class defining supplies contracts aimed to lease supplies.</rdfs:comment>
+        <rdfs:label xml:lang="es">Arrendamiento financiero</rdfs:label>
+        <rdfs:label xml:lang="en">Lease contract</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#LegalRemedy -->
+
+    <owl:Class rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#LegalRemedy">
+        <rdfs:subClassOf rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#Remedy"/>
+        <rdfs:label xml:lang="en">Legal remedy</rdfs:label>
+        <rdfs:label xml:lang="es">Recurso legal</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#Lot -->
+
+    <owl:Class rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#Lot">
+        <rdfs:subClassOf rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#Contract"/>
+        <rdfs:comment xml:lang="es">Clase de los contratos que representan un lote perteneciente a otro contrato.</rdfs:comment>
+        <rdfs:comment xml:lang="en">Class describing contracts that are an actual lot of another contract.</rdfs:comment>
+        <rdfs:label xml:lang="en">Lot</rdfs:label>
+        <rdfs:label xml:lang="es">Lote</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#MixedCapitalCompanyContract -->
+
+    <owl:Class rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#MixedCapitalCompanyContract">
+        <rdfs:subClassOf rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#PublicServicesManagementContract"/>
+        <rdfs:comment xml:lang="en">Class describing the contracts where the contracting authority participates concurrently with the natural or legal person.</rdfs:comment>
+        <rdfs:comment xml:lang="es">Los contrato de sociedad de economia mixta son aquellos en que la Administración participe, por sí o por medio de una entidad pública, en concurrencia con personas naturales o jurídicas.</rdfs:comment>
+        <rdfs:label xml:lang="es">Contrato de sociedad de economia mixta</rdfs:label>
+        <rdfs:label xml:lang="en">Mixed capital company contract</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#MixedContract -->
+
+    <owl:Class rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#MixedContract">
+        <rdfs:subClassOf rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#Contract"/>
+        <rdfs:label xml:lang="es">Contrato mixto</rdfs:label>
+        <rdfs:label xml:lang="en">Mixed contract</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#MultiannualContract -->
+
+    <owl:Class rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#MultiannualContract">
+        <rdfs:subClassOf rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#Contract"/>
+        <rdfs:comment xml:lang="es">Clase de los contrato plurianuales (i.e. contratos cuya duración se extiende durante más de un ejercicio contable).</rdfs:comment>
+        <rdfs:comment xml:lang="en">Class describing the multiannual contracts (i.e. contract whose duration extends over more than one financial year).</rdfs:comment>
+        <rdfs:label xml:lang="es">Contrato plurianual</rdfs:label>
+        <rdfs:label xml:lang="en">Multiannual contract</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#Notice -->
+
+    <owl:Class rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#Notice">
+        <rdfs:label xml:lang="es">Anuncio</rdfs:label>
+        <rdfs:label xml:lang="en">Notice</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#ObjectiveAwardCriterion -->
+
+    <owl:Class rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#ObjectiveAwardCriterion">
+        <rdfs:subClassOf rdf:resource="http://purl.org/procurement/public-contracts#AwardCriterion"/>
+        <rdfs:comment xml:lang="es">Clase para definir criterios que dependen de un juicio de valor.</rdfs:comment>
+        <rdfs:comment xml:lang="en">Class describing criterioa that depend on a value judgement.</rdfs:comment>
+        <rdfs:label xml:lang="es">Criterio de adjudicación objetivo</rdfs:label>
+        <rdfs:label xml:lang="en">Objective award criterion</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#OrdinaryAdministrativeRemedy -->
+
+    <owl:Class rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#OrdinaryAdministrativeRemedy">
+        <rdfs:subClassOf rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#Remedy"/>
+        <rdfs:label xml:lang="en">Ordinary administrative remedy</rdfs:label>
+        <rdfs:label xml:lang="es">Recurso administrativo ordinario</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#PrecomercialProcurement -->
+
+    <owl:Class rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#PrecomercialProcurement">
+        <rdfs:subClassOf rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#Contract"/>
+        <rdfs:label xml:lang="es">Compra pública pre-comercial</rdfs:label>
+        <rdfs:label xml:lang="en">Precomercial procurement</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#PriorInformationNotice -->
+
+    <owl:Class rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#PriorInformationNotice">
+        <rdfs:subClassOf rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#Notice"/>
+        <rdfs:label xml:lang="es">Anuncio de información previa</rdfs:label>
+        <rdfs:label xml:lang="en">Prior information notice</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#PrivateContract -->
+
+    <owl:Class rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#PrivateContract">
+        <rdfs:subClassOf rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#Contract"/>
+        <rdfs:label xml:lang="es">Contrato privado</rdfs:label>
+        <rdfs:label xml:lang="en">Private contract</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#ProcedureResignation -->
+
+    <owl:Class rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#ProcedureResignation">
+        <rdfs:subClassOf rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ContractOrProcedureExtinction"/>
+        <rdfs:label xml:lang="es">Desistimiento del procedimiento</rdfs:label>
+        <rdfs:label xml:lang="en">Procedure resignation</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#ProcedureVoid -->
+
+    <owl:Class rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#ProcedureVoid">
+        <rdfs:subClassOf rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ContractOrProcedureExtinction"/>
+        <rdfs:label xml:lang="es">Procedimiento desierto</rdfs:label>
+        <rdfs:label xml:lang="en">Procedure void</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#ProcedureWaive -->
+
+    <owl:Class rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#ProcedureWaive">
+        <rdfs:subClassOf rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ContractOrProcedureExtinction"/>
+        <rdfs:label xml:lang="en">Procedure waive</rdfs:label>
+        <rdfs:label xml:lang="es">Renuncia del procedimiento</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#PublicPrivatePartnershipContract -->
+
+    <owl:Class rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#PublicPrivatePartnershipContract">
+        <rdfs:subClassOf rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#Contract"/>
+        <rdfs:label xml:lang="es">Contrato de colaboración público-privada</rdfs:label>
+        <rdfs:label xml:lang="en">Public-private partnership contract</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#PublicServicesManagementContract -->
+
+    <owl:Class rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#PublicServicesManagementContract">
+        <rdfs:subClassOf rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#Contract"/>
+        <rdfs:label xml:lang="es">Contrato de gestión de servicios públicos</rdfs:label>
+        <rdfs:label xml:lang="en">Public services management contract</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#PublicWorksConcessionContract -->
+
+    <owl:Class rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#PublicWorksConcessionContract">
+        <rdfs:subClassOf rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#Contract"/>
+        <rdfs:label xml:lang="es">Contrato de concesión de obras públicas</rdfs:label>
+        <rdfs:label xml:lang="en">Public works concession contract</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#Remedy -->
+
+    <owl:Class rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#Remedy">
+        <rdfs:comment xml:lang="es">Recurso interpuesto sobre alguna de las resoluciones del proceso de licitación.</rdfs:comment>
+        <rdfs:comment xml:lang="en">Remedy lodged concerning a resolution about the procurement procedure.</rdfs:comment>
+        <rdfs:label xml:lang="es">Recurso</rdfs:label>
+        <rdfs:label xml:lang="en">Remedy</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#RentContract -->
+
+    <owl:Class rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#RentContract">
+        <rdfs:subClassOf rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#SuppliesContract"/>
+        <rdfs:comment xml:lang="es">Clase de los contratos de suministros cuyo objeto es el alquiler de bienes.</rdfs:comment>
+        <rdfs:comment xml:lang="en">Class defining supplies contracts aimed to rent supplies.</rdfs:comment>
+        <rdfs:label xml:lang="es">Contrato de alquiler</rdfs:label>
+        <rdfs:label xml:lang="en">Rent contract</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#ServicesContract -->
+
+    <owl:Class rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#ServicesContract">
+        <rdfs:subClassOf rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#Contract"/>
+        <rdfs:label xml:lang="es">Contrato de servicios</rdfs:label>
+        <rdfs:label xml:lang="en">Services contract</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#SharedResultAgreementContract -->
+
+    <owl:Class rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#SharedResultAgreementContract">
+        <rdfs:subClassOf rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#PublicServicesManagementContract"/>
+        <rdfs:comment xml:lang="es">Clase de los contrato en cuya virtud la Administración y el empresario participarán en los resultados de la explotación del servicio en la proporción que se establezca en el contrato.</rdfs:comment>
+        <rdfs:comment xml:lang="en">Class describing contracts whose operation results are shared among the contracting authority and the tenderer.</rdfs:comment>
+        <rdfs:label xml:lang="es">Gestión interesada</rdfs:label>
+        <rdfs:label xml:lang="en">Shared result agreement contract</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#SpecialAdministrativeContract -->
+
+    <owl:Class rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#SpecialAdministrativeContract">
+        <rdfs:subClassOf rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#Contract"/>
+        <rdfs:label xml:lang="es">Contrato administrativo especial</rdfs:label>
+        <rdfs:label xml:lang="en">Special administrative contract</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#SpecialAdministrativeRemedy -->
+
+    <owl:Class rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#SpecialAdministrativeRemedy">
+        <rdfs:subClassOf rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#Remedy"/>
+        <rdfs:label xml:lang="es">Recurso administrativo especial</rdfs:label>
+        <rdfs:label xml:lang="en">Special administrative remedy</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#SubjectiveAwardCriterion -->
+
+    <owl:Class rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#SubjectiveAwardCriterion">
+        <rdfs:subClassOf rdf:resource="http://purl.org/procurement/public-contracts#AwardCriterion"/>
+        <rdfs:comment xml:lang="es">Clase para especificar los criterios que dependen de una opinion subjetiva.</rdfs:comment>
+        <rdfs:comment xml:lang="en">Class used to describe criteria that depend on a subjetive opinion.</rdfs:comment>
+        <rdfs:label xml:lang="es">Criterio de adjudicación subjetivo</rdfs:label>
+        <rdfs:label xml:lang="en">Subjective award criterion</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#SuppliesContract -->
+
+    <owl:Class rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#SuppliesContract">
+        <rdfs:subClassOf rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#Contract"/>
+        <rdfs:comment xml:lang="es">Clase de los contratos cuyo objeto es la adquisición de suministros. Esta adquisición puede ser bien mediante compra, alquiler o arrendamiento financiero.</rdfs:comment>
+        <rdfs:comment xml:lang="en">Class describing contracts whose object is the acquisition of supplies.</rdfs:comment>
+        <rdfs:label xml:lang="es">Contrato de suministros</rdfs:label>
+        <rdfs:label xml:lang="en">Supplies contract</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#TechnicalCommittee -->
+
+    <owl:Class rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#TechnicalCommittee">
+        <rdfs:subClassOf rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#Committee"/>
+        <rdfs:label xml:lang="es">Organismo técnico</rdfs:label>
+        <rdfs:label xml:lang="en">Technical committee</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#TenderCommittee -->
+
+    <owl:Class rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#TenderCommittee">
+        <rdfs:subClassOf rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#Committee"/>
+        <rdfs:label xml:lang="es">Mesa de contratación</rdfs:label>
+        <rdfs:label xml:lang="en">Tender committee</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#TenderMeeting -->
+
+    <owl:Class rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#TenderMeeting">
+        <rdfs:subClassOf rdf:resource="http://schema.org/Event"/>
+        <rdfs:comment xml:lang="es">Clase para describir las reuniones que la mesa de contratación, comité de expertos u organismos técnicas han realizado.</rdfs:comment>
+        <rdfs:comment xml:lang="en">Class describing the meetings of tender committee.</rdfs:comment>
+        <rdfs:label xml:lang="es">Reunión de la mesa de contratación</rdfs:label>
+        <rdfs:label xml:lang="en">Tender meeting</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#TenderRequirements -->
+
+    <owl:Class rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#TenderRequirements">
+        <rdfs:comment xml:lang="es">Clase que define los requisitos exigidos a las ofertas a presentar (e.g. plazo o documentación a presentar).</rdfs:comment>
+        <rdfs:comment xml:lang="en">Class to define the tender requirements needed to submit a tender (e.g. tender document needs).</rdfs:comment>
+        <rdfs:label xml:lang="es">Requisitos para las ofertas</rdfs:label>
+        <rdfs:label xml:lang="en">Tender requirements</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#TenderersRequirements -->
+
+    <owl:Class rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#TenderersRequirements">
+        <rdfs:comment xml:lang="es">Clase que define los requisitos exigidos a los licitadores (e.g. clasificación profesional ó solvencia económica).</rdfs:comment>
+        <rdfs:comment xml:lang="en">Class defining the tenderers requirements (e.g. required classification or financial capability).</rdfs:comment>
+        <rdfs:label xml:lang="es">Requisitos de los licitadores</rdfs:label>
+        <rdfs:label xml:lang="en">Tenderers requirements</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#WorksContract -->
+
+    <owl:Class rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#WorksContract">
+        <rdfs:subClassOf rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#Contract"/>
+        <rdfs:label xml:lang="es">Contrato de obras</rdfs:label>
+        <rdfs:label xml:lang="en">Works contract</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/goodrelations/v1#Offering -->
+
+    <owl:Class rdf:about="http://purl.org/goodrelations/v1#Offering">
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/goodrelations/v1#"/>
+        <rdfs:label xml:lang="es">Oferta</rdfs:label>
+        <rdfs:label xml:lang="en">Offering</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/goodrelations/v1#PriceSpecification -->
+
+    <owl:Class rdf:about="http://purl.org/goodrelations/v1#PriceSpecification">
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/goodrelations/v1#"/>
+        <rdfs:label xml:lang="es">Especificación del precio</rdfs:label>
+        <rdfs:label xml:lang="en">Price specification</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/procurement/public-contracts#AwardCriteriaCombination -->
+
+    <owl:Class rdf:about="http://purl.org/procurement/public-contracts#AwardCriteriaCombination">
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/procurement/public-contracts#"/>
+        <rdfs:label xml:lang="en">Award criteria combination</rdfs:label>
+        <rdfs:label xml:lang="es">Combinación de criterios para la adjudicación</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/procurement/public-contracts#AwardCriterion -->
+
+    <owl:Class rdf:about="http://purl.org/procurement/public-contracts#AwardCriterion">
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/procurement/public-contracts#"/>
+        <rdfs:label xml:lang="en">Award criterion</rdfs:label>
+        <rdfs:label xml:lang="es">Criterio de adjudicación</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/procurement/public-contracts#Contract -->
+
+    <owl:Class rdf:about="http://purl.org/procurement/public-contracts#Contract">
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/procurement/public-contracts#"/>
+        <rdfs:label xml:lang="en">Contract</rdfs:label>
+        <rdfs:label xml:lang="es">Contrato</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/procurement/public-contracts#Tender -->
+
+    <owl:Class rdf:about="http://purl.org/procurement/public-contracts#Tender">
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/procurement/public-contracts#"/>
+        <rdfs:label xml:lang="es">Oferta de licitación</rdfs:label>
+        <rdfs:label xml:lang="en">Tender</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://schema.org/Event -->
+
+    <owl:Class rdf:about="http://schema.org/Event">
+        <rdfs:isDefinedBy rdf:resource="http://schema.org/"/>
+        <rdfs:label xml:lang="en">Event</rdfs:label>
+        <rdfs:label xml:lang="es">Evento</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://schema.org/Place -->
+
+    <owl:Class rdf:about="http://schema.org/Place">
+        <rdfs:isDefinedBy rdf:resource="http://schema.org/"/>
+        <rdfs:label xml:lang="es">Lugar</rdfs:label>
+        <rdfs:label xml:lang="en">Place</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://schema.org/PostalAddress -->
+
+    <owl:Class rdf:about="http://schema.org/PostalAddress">
+        <rdfs:isDefinedBy rdf:resource="http://schema.org/"/>
+        <rdfs:label xml:lang="es">Dirección postal</rdfs:label>
+        <rdfs:label xml:lang="en">Postal address</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#Concept -->
+
+    <owl:Class rdf:about="http://www.w3.org/2004/02/skos/core#Concept">
+        <rdfs:isDefinedBy rdf:resource="http://www.w3.org/2004/02/skos/core#"/>
+        <rdfs:label xml:lang="en">Concept</rdfs:label>
+        <rdfs:label xml:lang="es">Concepto</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#ConceptScheme -->
+
+    <owl:Class rdf:about="http://www.w3.org/2004/02/skos/core#ConceptScheme">
+        <rdfs:isDefinedBy rdf:resource="http://www.w3.org/2004/02/skos/core#"/>
+        <rdfs:label xml:lang="en">Concept scheme</rdfs:label>
+        <rdfs:label xml:lang="es">Esquema de conceptos</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/ns/org#Organization -->
+
+    <owl:Class rdf:about="http://www.w3.org/ns/org#Organization">
+        <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/org#"/>
+        <rdfs:label xml:lang="es">Organización</rdfs:label>
+        <rdfs:label xml:lang="en">Organization</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://xmlns.com/foaf/0.1/Document -->
+
+    <owl:Class rdf:about="http://xmlns.com/foaf/0.1/Document">
+        <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/"/>
+        <rdfs:label xml:lang="en">Document</rdfs:label>
+        <rdfs:label xml:lang="es">Documento</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://xmlns.com/foaf/0.1/Person -->
+
+    <owl:Class rdf:about="http://xmlns.com/foaf/0.1/Person">
+        <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/"/>
+        <rdfs:label xml:lang="en">Person</rdfs:label>
+        <rdfs:label xml:lang="es">Persona</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/contsem -->
+
+    <owl:NamedIndividual rdf:about="http://contsem.unizar.es/def/sector-publico/contsem">
+        <dcterms:title xml:lang="en">CONTSEM ontology</dcterms:title>
+        <dcterms:title xml:lang="es">ontologia CONTSEM</dcterms:title>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#AdministrativeInformation -->
+
+    <owl:NamedIndividual rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#AdministrativeInformation">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <skos:inScheme rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#InformationKindScheme"/>
+        <skos:topConceptOf rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#InformationKindScheme"/>
+        <rdfs:label xml:lang="en">Administrative information</rdfs:label>
+        <rdfs:label xml:lang="es">Información administrativa</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#Emergency -->
+
+    <owl:NamedIndividual rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#Emergency">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <skos:inScheme rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#UrgencyTypeScheme"/>
+        <skos:topConceptOf rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#UrgencyTypeScheme"/>
+        <rdfs:label xml:lang="es">Emergencia</rdfs:label>
+        <rdfs:label xml:lang="en">Emergency</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#Express -->
+
+    <owl:NamedIndividual rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#Express">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <skos:inScheme rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#UrgencyTypeScheme"/>
+        <skos:topConceptOf rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#UrgencyTypeScheme"/>
+        <rdfs:label xml:lang="en">Express</rdfs:label>
+        <rdfs:label xml:lang="es">Urgente</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#InformationKindScheme -->
+
+    <owl:NamedIndividual rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#InformationKindScheme">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#ConceptScheme"/>
+        <rdfs:comment xml:lang="en">Scheme that indicates the type of the information that can be provided.</rdfs:comment>
+        <rdfs:label xml:lang="es">Esquema de tipos de información</rdfs:label>
+        <rdfs:label xml:lang="en">Information kind scheme</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#Minor -->
+
+    <owl:NamedIndividual rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#Minor">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <skos:inScheme rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ProcedureTypeScheme"/>
+        <skos:topConceptOf rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ProcedureTypeScheme"/>
+        <rdfs:label xml:lang="es">Menor</rdfs:label>
+        <rdfs:label xml:lang="en">Minor</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#Negotiated -->
+
+    <owl:NamedIndividual rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#Negotiated">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <owl:sameAs rdf:resource="http://purl.org/procurement/public-contracts#Negotiated"/>
+        <skos:inScheme rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ProcedureTypeScheme"/>
+        <skos:narrower rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#NegotiatedWithPublicity"/>
+        <skos:narrower rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#NegotiatedWithoutPublicity"/>
+        <skos:topConceptOf rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ProcedureTypeScheme"/>
+        <rdfs:comment xml:lang="en">Abstract concept defining the procedure of the contract as negotiated.</rdfs:comment>
+        <rdfs:label xml:lang="es">Negociado</rdfs:label>
+        <rdfs:label xml:lang="en">Negotiated</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#NegotiatedWithPublicity -->
+
+    <owl:NamedIndividual rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#NegotiatedWithPublicity">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <skos:broader rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#Negotiated"/>
+        <skos:inScheme rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ProcedureTypeScheme"/>
+        <rdfs:label xml:lang="es">Negociado con publicidad</rdfs:label>
+        <rdfs:label xml:lang="en">Negotiated with publicity</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#NegotiatedWithoutPublicity -->
+
+    <owl:NamedIndividual rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#NegotiatedWithoutPublicity">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <skos:broader rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#Negotiated"/>
+        <skos:inScheme rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ProcedureTypeScheme"/>
+        <rdfs:label xml:lang="es">Negociado sin publicidad</rdfs:label>
+        <rdfs:label xml:lang="en">Negotiated without publicity</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#ProcedureTypeScheme -->
+
+    <owl:NamedIndividual rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#ProcedureTypeScheme">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#ConceptScheme"/>
+        <rdfs:comment xml:lang="en">Scheme defining the procedure to be followed in a tender.</rdfs:comment>
+        <rdfs:label xml:lang="es">Esquema de tipos de procedimiento</rdfs:label>
+        <rdfs:label xml:lang="en">Procedure type scheme</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#Regular -->
+
+    <owl:NamedIndividual rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#Regular">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <skos:inScheme rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#UrgencyTypeScheme"/>
+        <skos:topConceptOf rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#UrgencyTypeScheme"/>
+        <rdfs:label xml:lang="es">Ordinaria</rdfs:label>
+        <rdfs:label xml:lang="en">Regular</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#RegularOpen -->
+
+    <owl:NamedIndividual rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#RegularOpen">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <owl:sameAs rdf:resource="http://purl.org/procurement/public-contracts#Open"/>
+        <skos:inScheme rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ProcedureTypeScheme"/>
+        <skos:topConceptOf rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ProcedureTypeScheme"/>
+        <rdfs:label xml:lang="es">Abierto ordinario</rdfs:label>
+        <rdfs:label xml:lang="en">Regular open</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#SimpleOpen -->
+
+    <owl:NamedIndividual rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#SimpleOpen">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <skos:inScheme rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ProcedureTypeScheme"/>
+        <skos:topConceptOf rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ProcedureTypeScheme"/>
+        <rdfs:label xml:lang="es">Abierto simple</rdfs:label>
+        <rdfs:label xml:lang="en">Simple open</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#TechnicalInformation -->
+
+    <owl:NamedIndividual rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#TechnicalInformation">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <skos:inScheme rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#InformationKindScheme"/>
+        <skos:topConceptOf rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#InformationKindScheme"/>
+        <rdfs:label xml:lang="es">Información técnica</rdfs:label>
+        <rdfs:label xml:lang="en">Technical information</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://contsem.unizar.es/def/sector-publico/pproc#UrgencyTypeScheme -->
+
+    <owl:NamedIndividual rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#UrgencyTypeScheme">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#ConceptScheme"/>
+        <rdfs:comment xml:lang="en">Scheme that defines the kinds of urgency a procedure can follow.</rdfs:comment>
+        <rdfs:label xml:lang="es">Esquema de tipos de urgencia</rdfs:label>
+        <rdfs:label xml:lang="en">Urgency type scheme</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://es.linkedin.com/pub/guillermo-esteban-p%C3%A9rez/56/210/5a8 -->
+
+    <owl:NamedIndividual rdf:about="http://es.linkedin.com/pub/guillermo-esteban-p%C3%A9rez/56/210/5a8">
+        <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/procurement/public-contracts#CompetitiveDialogue -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/procurement/public-contracts#CompetitiveDialogue">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <skos:inScheme rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ProcedureTypeScheme"/>
+        <skos:topConceptOf rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ProcedureTypeScheme"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/procurement/public-contracts#"/>
+        <rdfs:label xml:lang="en">Competitive dialogue</rdfs:label>
+        <rdfs:label xml:lang="es">Diálogo competitvo</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/procurement/public-contracts#Negotiated -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/procurement/public-contracts#Negotiated">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/procurement/public-contracts#"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/procurement/public-contracts#Open -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/procurement/public-contracts#Open">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/procurement/public-contracts#"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/procurement/public-contracts#Restricted -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/procurement/public-contracts#Restricted">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <skos:inScheme rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ProcedureTypeScheme"/>
+        <skos:topConceptOf rdf:resource="http://contsem.unizar.es/def/sector-publico/pproc#ProcedureTypeScheme"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/procurement/public-contracts#"/>
+        <rdfs:label xml:lang="en">Restricted</rdfs:label>
+        <rdfs:label xml:lang="es">Restringido</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://webdiis.unizar.es/~seron/ -->
+
+    <owl:NamedIndividual rdf:about="http://webdiis.unizar.es/~seron/">
+        <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.araid.es/en/users/jfm#profile-investigador -->
+
+    <owl:NamedIndividual rdf:about="http://www.araid.es/en/users/jfm#profile-investigador">
+        <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://www.linkedin.com/profile/view?id=218098827 -->
+
+    <owl:NamedIndividual rdf:about="https://www.linkedin.com/profile/view?id=218098827">
+        <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#AdditionalInformationNotice"/>
+            <rdf:Description rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#ContractAwardNotice"/>
+            <rdf:Description rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#ContractNotice"/>
+            <rdf:Description rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#CorrectionNotice"/>
+            <rdf:Description rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#FormalizationNotice"/>
+            <rdf:Description rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#PriorInformationNotice"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#AgreementContract"/>
+            <rdf:Description rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#ConcessionContract"/>
+            <rdf:Description rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#MixedCapitalCompanyContract"/>
+            <rdf:Description rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#SharedResultAgreementContract"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#BuyContract"/>
+            <rdf:Description rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#LeaseContract"/>
+            <rdf:Description rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#RentContract"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#ContractWithLots"/>
+            <rdf:Description rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#ContractWithoutLots"/>
+            <rdf:Description rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#Lot"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#MixedContract"/>
+            <rdf:Description rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#PrecomercialProcurement"/>
+            <rdf:Description rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#PrivateContract"/>
+            <rdf:Description rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#PublicPrivatePartnershipContract"/>
+            <rdf:Description rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#PublicServicesManagementContract"/>
+            <rdf:Description rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#PublicWorksConcessionContract"/>
+            <rdf:Description rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#ServicesContract"/>
+            <rdf:Description rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#SpecialAdministrativeContract"/>
+            <rdf:Description rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#SuppliesContract"/>
+            <rdf:Description rdf:about="http://contsem.unizar.es/def/sector-publico/pproc#WorksContract"/>
+        </owl:members>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+
