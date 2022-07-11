@@ -1,0 +1,77 @@
+prefixes:
+  rr: http://www.w3.org/ns/r2rml#
+  foaf: http://xmlns.com/foaf/0.1/
+  xsd: http://www.w3.org/2001/XMLSchema#
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+  rev: http://purl.org/stuff/rev#
+  schema: http://schema.org/
+  dct: http://purl.org/dc/terms/
+  rml: http://semweb.mmlab.be/ns/rml#
+  ql: http://semweb.mmlab.be/ns/ql#
+  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+  vocab: http://example.org#
+  org: http://www.w3.org/ns/org#
+  pproces: http://contsem.unizar.es/def/sector-publico/pproc/spain#
+  pproc: http://contsem.unizar.es/def/sector-publico/pproc#
+  pc: http://purl.org/procurement/public-contracts#
+  
+mappings:
+  organization:
+    sources:
+      - [licitaciones.csv~csv]
+    s: http://example.org/procurement/recurso/organization/contracting-authority/$(cif)
+    po:
+      - [rdf:type, org:Organization]
+      - [schema:name,$(organo_de_contratacion)]
+      - [pproces:dir3,$(dir3)]
+      - [org:identifier,$(cif)]
+
+  contract:
+    sources:
+      - [licitaciones.csv~csv]
+    s: http://example.org/procurement/recurso/contract/$(identificador)
+    po:
+      - [rdf:type, pproc:Contract]
+      - [pproc:legalDocumentReference,$(url)]
+      - [pproces:state,http://contsem.unizar.es/def/sector-publico/pproc/states/$(estado_skos)~iri]
+      - [pproces:expediente,$(expediente)]
+      - [pproces:cpv, $(cpv) ]
+      - p: pproc:contractObject
+        o:
+          - mapping: contractObject
+      - p: pc:contractingAuthority
+        o:
+          - mapping: organization
+  contractObject:
+    sources:
+      - [licitaciones.csv~csv]
+    s: http://example.org/procurement/recurso/contract/$(identificador)/object
+    po:
+      - [rdf:type, pproc:ContractObject]
+      - [pproc:mainObject,$(descripcion)]
+      - p: pproc:location
+        o:
+          - mapping: place
+  place:
+    sources:
+      - [licitaciones.csv~csv]
+    s: http://example.org/procurement/recurso/place/$(lugar_ejecucion)
+    po:
+      - [rdf:type, schema:Place]
+
+  suppliers:
+    sources:
+      - [resultados.csv~csv]
+    s: http://example.org/procurement/recurso/organization/supplier/$(identificador-adjudicatario)
+    po:
+      - [rdf:type, org:Organization]
+      - [schema:name,$(adjudicatario)]
+      - [org:identifier,$(identificador-adjudicatario)]
+
+  contractResults:
+    sources:
+      - [resultados.csv~csv]
+    s: http://example.org/procurement/recurso/contract/$(Identificador)
+    po:
+      - [pproces:price,$(Importe-adjudicacion),xsd:float]
+      - [pproces:dateAgreement,$(Fecha-acuerdo),xsd:date]
