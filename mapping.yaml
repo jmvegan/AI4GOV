@@ -21,7 +21,7 @@ mappings:
       - [licitaciones.csv~csv]
     s: http://example.org/procurement/recurso/organization/contracting-authority/$(cif)
     po:
-      - [rdf:type, org:Organization]
+      - [a, org:Organization]
       - [schema:name,$(organo_de_contratacion)]
       - [pproces:dir3,$(dir3)]
       - [org:identifier,$(cif)]
@@ -31,7 +31,7 @@ mappings:
       - [licitaciones.csv~csv]
     s: http://example.org/procurement/recurso/contract/$(identificador)
     po:
-      - [rdf:type, pproc:Contract]
+      - [a, pproc:Contract]
       - [pproc:legalDocumentReference,$(url)]
       - [pproces:state,http://contsem.unizar.es/def/sector-publico/pproc/states/$(estado_skos)~iri]
       - [pproces:expediente,$(expediente)]
@@ -42,12 +42,20 @@ mappings:
       - p: pc:contractingAuthority
         o:
           - mapping: organization
+      - p: pc:supplier
+        o:
+          - mapping: supplier
+            condition:
+              function: equal
+              parameters:
+                - [str1, $(expediente)]
+                - [str2, $(Expediente)]
   contractObject:
     sources:
       - [licitaciones.csv~csv]
     s: http://example.org/procurement/recurso/contract/$(identificador)/object
     po:
-      - [rdf:type, pproc:ContractObject]
+      - [a, pproc:ContractObject]
       - [pproc:mainObject,$(descripcion)]
       - p: pproc:location
         o:
@@ -57,14 +65,14 @@ mappings:
       - [licitaciones.csv~csv]
     s: http://example.org/procurement/recurso/place/$(lugar_ejecucion)
     po:
-      - [rdf:type, schema:Place]
+      - [a, schema:Place]
 
-  suppliers:
+  supplier:
     sources:
       - [resultados.csv~csv]
     s: http://example.org/procurement/recurso/organization/supplier/$(identificador-adjudicatario)
     po:
-      - [rdf:type, org:Organization]
+      - [a, org:Organization]
       - [schema:name,$(adjudicatario)]
       - [org:identifier,$(identificador-adjudicatario)]
 
